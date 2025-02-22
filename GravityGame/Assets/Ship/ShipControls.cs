@@ -49,7 +49,7 @@ public class ShipControls : MonoBehaviour
         var yawRotation = shipMesh.transform.right.y * Mathf.Lerp(10.0f, 25.0f, (1-t));
 
         var roll = z * Time.deltaTime * verticalRotateSpeed;
-        var pitch = 0.01f * yInput * Time.deltaTime * verticalRotateSpeed;
+        var pitch = -0.01f * yInput * Time.deltaTime * verticalRotateSpeed;
         var yaw = -x * Time.deltaTime * horizontalRotateSpeed;
 
         forward = forward * Quaternion.AngleAxis(roll, transform.forward);
