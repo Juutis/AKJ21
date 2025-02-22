@@ -110,6 +110,7 @@ public class ShipControls : MonoBehaviour
     void handleAcceleration() {
         var input = Input.GetAxis("Vertical");
         speed += input * Time.deltaTime * 10.0f;
+        speed = Mathf.MoveTowards(speed, 0.0f, 5.0f * Time.deltaTime);
         speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
         if (input > 0.0f) {
             booster.Play();
