@@ -4,7 +4,7 @@ public class ShipSpawner : MonoBehaviour
 {
     private GobboShip shipAi;
     private float spawned;
-    private float spawnDuration = 2.0f;
+    private float spawnDuration = 1.0f;
     private bool started = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -12,14 +12,15 @@ public class ShipSpawner : MonoBehaviour
     {
         shipAi = GetComponentInChildren<GobboShip>(true);
         shipAi.enabled = false;
-        spawned = Time.time;
         shipAi.gameObject.SetActive(false);
-        Invoke("go", Random.Range(0.0f, 0.5f));
+        Invoke("go", Random.Range(0.0f, 1.0f));
     }
 
     public void go() {
         started = true;
+        spawned = Time.time;
         shipAi.gameObject.SetActive(true);
+        Update();
     }
 
     // Update is called once per frame
