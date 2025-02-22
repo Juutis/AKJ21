@@ -9683,6 +9683,7 @@ GameObject:
   - component: {fileID: 3586243140463295681}
   - component: {fileID: 8327556824628002565}
   - component: {fileID: 7611528387550928711}
+  - component: {fileID: -3051096939492254530}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -9800,6 +9801,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.53807557
   m_Center: {x: 0, y: 0, z: -0.14200674}
+--- !u!114 &-3051096939492254530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690361430817125412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63534eec1325744ba49b71f571be9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 5
+  shieldRechargeAmount: 1
+  shieldRechargeCD: 10
+  hitCD: 1
 --- !u!1 &6339380551495876889
 GameObject:
   m_ObjectHideFlags: 0

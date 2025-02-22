@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIManager: MonoBehaviour {
     public static UIManager main;
@@ -11,14 +12,54 @@ public class UIManager: MonoBehaviour {
     [SerializeField]
     private UIShop uiShop;
 
+    [SerializeField]
+    private UICurtainTransition uiCurtainTransition;
+
     void Awake()
     {
         main = this;
     } 
 
     void Start() {
-
+        Cursor.visible = false;
     }
+
+    public void CurtainTransition(UnityAction showCallback, UnityAction hideCallback) {
+        uiCurtainTransition.Show(delegate {
+            showCallback?.Invoke();
+            uiCurtainTransition.Hide(delegate{
+                hideCallback?.Invoke();
+            });
+        });
+    }
+
+    public void ShowShop() {
+        if (uiShop.IsShown) {
+            return;
+        }
+        CurtainTransition(
+            delegate{
+                uiShop.Show();
+            },
+            delegate{
+                Cursor.lockState = CursorLockMode.None;
+            }
+        );
+    }
+    public void HideShop()
+    {
+        CurtainTransition(
+            delegate
+            {
+                uiShop.Hide();
+            },
+            delegate
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        );
+    }
+
 
     public void InitializeBaseInventory(Inventory inventory) {
         uiBaseInventory.Initialize(inventory, false);

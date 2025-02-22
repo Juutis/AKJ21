@@ -17,11 +17,14 @@ public class UIStorageIndicator : MonoBehaviour
     public void Initialize(Inventory newInventory)
     {
         inventory = newInventory;
-        container.gameObject.SetActive(true);
     }
 
     public void UpdateView()
     {
+        if (!container.gameObject.activeSelf)
+        {
+            container.gameObject.SetActive(true);
+        }
         float fillAmount = inventory.CurrentWeight / (float)inventory.GetMaxStorage();
         imgProgress.fillAmount = fillAmount;
         txtAmount.text = $"{inventory.CurrentWeight} / {inventory.GetMaxStorage()}";

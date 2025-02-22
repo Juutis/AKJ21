@@ -21,7 +21,6 @@ public class UIInventory : MonoBehaviour
         items.Clear();
         if (IsShipInventory) {
             storageIndicator.Initialize(inventory);
-            storageIndicator.UpdateView();
         }
     }
 

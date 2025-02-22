@@ -24,6 +24,7 @@ public class ShipHarvester : MonoBehaviour
             {
                 ResourceType type = p.ResourceType;
                 Debug.Log($"Picked up {type}");
+                Shop.main.AddResourceToShip(type, 1);
             }
             Destroy(hit.transform.gameObject);
         }

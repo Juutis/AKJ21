@@ -286,6 +286,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49bd238203f2efc46ab15f749c9b2cf0, type: 3}
+--- !u!1001 &502612834
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8396769526898797003, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_Name
+      value: PickupGobbonium (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.5067544
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.432219
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.089703
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af6459c01aca5c441979d349517361e0, type: 3}
 --- !u!1 &723786435
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +418,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723786435}
   m_CullTransparentMesh: 1
+--- !u!1001 &728368559
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8396769526898797003, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_Name
+      value: PickupGobbonium
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2750075
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7195442
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.561846
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af6459c01aca5c441979d349517361e0, type: 3}
 --- !u!1 &747211121
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,10 +654,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GobboShip
       objectReference: {fileID: 0}
-    - target: {fileID: 8007243239506843346, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
-      propertyPath: maxHP
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -681,6 +791,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64b297f0041335548b9245c3580e3a38, type: 3}
+--- !u!1001 &1571717985
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8396769526898797003, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_Name
+      value: PickupGobbonium (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.0010104
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5762532
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.640278
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584041240518201616, guid: af6459c01aca5c441979d349517361e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af6459c01aca5c441979d349517361e0, type: 3}
 --- !u!1 &1626750900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,3 +1185,6 @@ SceneRoots:
   - {fileID: 8278343850310315024}
   - {fileID: 859454381}
   - {fileID: 1024320965}
+  - {fileID: 728368559}
+  - {fileID: 502612834}
+  - {fileID: 1571717985}

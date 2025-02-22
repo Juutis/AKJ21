@@ -31,7 +31,6 @@ public class ShopItem : MonoBehaviour
     public void Unlock()
     {
         isLocked = false;
-        UIManager.main.ShowShopItem(this);
     }
 
 }

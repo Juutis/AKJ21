@@ -7,7 +7,6 @@ public class ShipUpgrade : MonoBehaviour
 
     private bool isApplied = false;
     public bool IsApplied { get { return isApplied; } }
-
     public ShipUpgradeType UpgradeType { get { return config.UpgradeType; } }
     public int UpgradeTier { get { return config.UpgradeTier; } }
 
