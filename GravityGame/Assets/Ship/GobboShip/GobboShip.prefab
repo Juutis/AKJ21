@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2315886811920112938}
   - component: {fileID: 8007243239506843346}
   - component: {fileID: 5073370585480377284}
+  - component: {fileID: 355569601812591156}
   m_Layer: 10
   m_Name: GobboShip
   m_TagString: Untagged
@@ -81,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannon: {fileID: 9173500075902897004}
+  maxHP: 5
 --- !u!54 &5073370585480377284
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108,6 +110,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!135 &355569601812591156
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4107974036550228616}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &22826233890607633
 PrefabInstance:
   m_ObjectHideFlags: 0

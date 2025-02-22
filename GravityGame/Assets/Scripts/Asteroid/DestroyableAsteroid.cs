@@ -58,7 +58,7 @@ public class DestroyableAsteroid : MonoBehaviour
 
     }
 
-    public void Hit()
+    private void Hit()
     {
         if (Time.time - lastHit < hitCD)
         {
@@ -118,11 +118,15 @@ public class DestroyableAsteroid : MonoBehaviour
         {
             drop.isKinematic = false;
         }
-    }   
+    }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Hit();
+        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
+        {
+            Hit();
+            Destroy(other.gameObject);
+        }
     }
 }
 
