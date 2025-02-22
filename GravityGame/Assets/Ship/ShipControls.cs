@@ -29,7 +29,7 @@ public class ShipControls : MonoBehaviour
 
     private float speed;
     private float maxSpeed = 20.0f;
-    private float minSpeed = 0.0f;
+    private float minSpeed = -5.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -86,7 +86,7 @@ public class ShipControls : MonoBehaviour
     private float zoomDiff;
 
     void handleZoom() {
-        zoomDiff += Input.GetAxis("Mouse ScrollWheel") * 5;
+        zoomDiff -= Input.GetAxis("Mouse ScrollWheel") * 5;
         zoom += zoomDiff * Time.deltaTime;
         if (zoom > maxZoom) {
             zoom = maxZoom;
