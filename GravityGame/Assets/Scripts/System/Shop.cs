@@ -2,6 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shop: MonoBehaviour {
+    public static Shop main;
+
+    void Awake()
+    {
+        main = this;
+    }
+
     [SerializeField]
     private Inventory baseInventory;
     [SerializeField]
@@ -17,6 +24,13 @@ public class Shop: MonoBehaviour {
     [SerializeField]
     private List<ShipUpgradeConfigScriptableObject> upgrades = new();
     private List<ShopItem> shopItems = new();
+
+    
+
+    public void EnterShop() {
+        Time.timeScale = 0;
+        UIManager.main.ShowShop();
+    }
 
     private void Start() {
         foreach (var upgrade in upgrades) {
@@ -62,6 +76,13 @@ public class Shop: MonoBehaviour {
             UIManager.main.ShowMessage("Bought " + shopItem.Name);
         } else {
             UIManager.main.ShowMessage("Can't afford " + shopItem.Name);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B)) {
+            EnterShop();
         }
     }
 }
