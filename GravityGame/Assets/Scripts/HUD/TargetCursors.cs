@@ -31,7 +31,7 @@ public class TargetCursors : MonoBehaviour
     {
         if (Time.time - lastPoll > pollTime)
         {
-            pollTime = Time.time;
+            lastPoll = Time.time;
             foreach (TargetCursor targetCursor in targetCursors)
             {
                 List<GameObject> objs = GameObject.FindGameObjectsWithTag(targetCursor.tag).ToList();
@@ -50,18 +50,42 @@ public class TargetCursors : MonoBehaviour
             float yMax = center.y + size.y - borderPad;
             float xMin = center.x + borderPad;
             float xMax = center.x + size.x - borderPad;
+
+            float k1 = size.y / size.x;
+            float k2 = -size.y / size.x;
+
+            // if (vpPos.z < 0)
+            // {
+            //     if (vpPos.y > k1 * vpPos.x && vpPos.y > k2 * vpPos.x)
+            //     {
+            //         vpPos.y = yMax;
+            //     }
+            //     else if (vpPos.y < k1 * vpPos.x && vpPos.y < k2 * vpPos.x)
+            //     {
+            //         vpPos.y = yMin;
+            //     }
+            //     else if (vpPos.y < k1 * vpPos.x && vpPos.y > k2 * vpPos.x)
+            //     {
+            //         vpPos.x = xMax;
+            //     }
+            //     else if (vpPos.y > k1 * vpPos.x && vpPos.y < k2 * vpPos.x)
+            //     {
+            //         vpPos.x = xMin;
+            //     }
+            // }
+
             Vector3 clamped = new Vector3(Mathf.Clamp(vpPos.x, xMin, xMax), Mathf.Clamp(vpPos.y, yMin, yMax), vpPos.z);
-       
+
             if (vpPos.z < 0 && entry.Key == "Respawn")
             {
-                Debug.Log("LOL");
+                Debug.Log($"LOL");
             }
             else if (entry.Key == "Respawn")
             {
                 Debug.Log("NOT LOL");
 
             }
-            
+
             TargetCursor cursor = targetCursors.FirstOrDefault(x => x.tag == entry.Key);
             cursor.img.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(vpPos.y, vpPos.x) - 90);
 
