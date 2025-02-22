@@ -540,10 +540,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GobboShip
       objectReference: {fileID: 0}
-    - target: {fileID: 8007243239506843346, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
-      propertyPath: maxHP
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
