@@ -83,7 +83,6 @@ public class ShipControls : MonoBehaviour
     void FixedUpdate()
     {
         rb.linearVelocity = shipMesh.transform.forward * speed;
-        Debug.Log(rb.linearVelocity);
     }
 
     private float minZoom = 2.0f;
