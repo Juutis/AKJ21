@@ -58,6 +58,9 @@ public class ShipControls : MonoBehaviour
         xInput += x;
         yInput += y;
 
+        xInput = Mathf.Clamp(xInput, -200.0f, 200.0f);
+        yInput = Mathf.Clamp(yInput, -200.0f, 200.0f);
+
         var horizontalRotateSpeed = Mathf.Lerp(minHorizontalRotateSpeed, maxHorizontalRotateSpeed, t);
         var verticalRotateSpeed = Mathf.Lerp(minVerticalRotateSpeed, maxVerticalRotateSpeed, t);
 
