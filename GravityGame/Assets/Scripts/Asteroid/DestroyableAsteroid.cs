@@ -72,7 +72,6 @@ public class DestroyableAsteroid : MonoBehaviour
         foreach (Material material in materials)
         {
             material.color = Color.Lerp(matColorCache[material], Color.red, ((float)maxHP - currentHP)/maxHP * 0.666f);
-            Debug.Log($"Color Lerp: {((float)maxHP - currentHP) / maxHP * 0.8f}, {maxHP}, {currentHP}");
         }
 
         if (currentHP <= 0)

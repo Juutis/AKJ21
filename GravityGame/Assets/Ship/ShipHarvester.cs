@@ -8,7 +8,7 @@ public class ShipHarvester : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,9 +16,15 @@ public class ShipHarvester : MonoBehaviour
     {
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, harvestRadius, transform.forward, 0.1f, LayerMask.GetMask("Pickup"));
 
-        foreach (RaycastHit hit in hits )
+        foreach (RaycastHit hit in hits)
         {
-            Debug.Log("Picked up");
+            GameObject obj = hit.transform.gameObject;
+
+            if (obj.TryGetComponent(out PickupResource p))
+            {
+                ResourceType type = p.ResourceType;
+                Debug.Log($"Picked up {type}");
+            }
             Destroy(hit.transform.gameObject);
         }
     }
