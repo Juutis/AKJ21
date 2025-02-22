@@ -37,9 +37,9 @@ public class ShipControls : MonoBehaviour
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, camera.transform.rotation, rotateSpeed * Time.deltaTime);
 
         var t = 1.0f;
-        var x = Input.GetAxis("Horizontal");
+        var x = Input.GetAxis("Mouse X");
         var y = Input.GetAxis("Mouse Y");
-        var z = Input.GetAxis("Mouse X");
+        var z = Input.GetAxis("Horizontal");
         yInput += y;
         yInput += -Math.Sign(yInput) * 10f * Time.deltaTime;
         //if(!WorldManager.main.invertControls) y = -y;
