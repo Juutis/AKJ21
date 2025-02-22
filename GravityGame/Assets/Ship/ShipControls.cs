@@ -31,6 +31,9 @@ public class ShipControls : MonoBehaviour
     private float maxSpeed = 20.0f;
     private float minSpeed = -5.0f;
 
+    [SerializeField]
+    private ParticleSystem booster;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -102,8 +105,13 @@ public class ShipControls : MonoBehaviour
     }
 
     void handleAcceleration() {
-        speed += Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
+        var input = Input.GetAxis("Vertical");
+        speed += input * Time.deltaTime * 10.0f;
         speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
-        Debug.Log(speed);
+        if (input > 0.0f) {
+            booster.Play();
+        } else {
+            booster.Stop();
+        }
     }
 }
