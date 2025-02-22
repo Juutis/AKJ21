@@ -76,8 +76,10 @@ public class ShipControls : MonoBehaviour
         shipMesh.transform.Rotate(Vector3.right, pitch);
         shipMesh.transform.Rotate(-Vector3.up, yaw);
         
-        xInput = Mathf.MoveTowards(xInput, 0.0f, 40f * Time.deltaTime);
-        yInput = Mathf.MoveTowards(yInput, 0.0f, 20f * Time.deltaTime);
+        //xInput = Mathf.MoveTowards(xInput, 0.0f, 40f * Time.deltaTime);
+        //yInput = Mathf.MoveTowards(yInput, 0.0f, 20f * Time.deltaTime);
+        xInput = xInput * Mathf.Pow(0.9f, Time.deltaTime*30);
+        yInput = yInput * Mathf.Pow(0.9f, Time.deltaTime*30);
     }
 
     void FixedUpdate()
