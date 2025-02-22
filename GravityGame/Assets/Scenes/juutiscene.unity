@@ -463,10 +463,6 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 2000
       objectReference: {fileID: 0}
-    - target: {fileID: 4856133756044796573, guid: 731082518fc106942ae6e911cedc4315, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 6682034228491662430, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.501589
@@ -506,10 +502,6 @@ PrefabInstance:
     - target: {fileID: 6682034228491662430, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7939939063627579033, guid: 731082518fc106942ae6e911cedc4315, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
