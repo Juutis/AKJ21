@@ -63,6 +63,11 @@ public class Shop: MonoBehaviour {
         return false;
     }
 
+    public void AddResourceToShip(ResourceType resourceType, int amount) {
+        shipInventory.AddResource(ResourceManager.main.GetResource(resourceType), amount);
+    }
+
+
     public void TransferShipResourcesToBase() {
         foreach (var resource in shipInventory.GetAll()) {
             baseInventory.AddResource(resource.Resource, resource.Amount);
