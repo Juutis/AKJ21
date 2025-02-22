@@ -17,11 +17,13 @@ public class GobboShip : MonoBehaviour
     private Rigidbody rb;
 
     private float moveSpeed = 5.0f;
+    private Transform alignTransform;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        alignTransform = player.transform.Find("Ship");
         rb = GetComponent<Rigidbody>();
     }
 
