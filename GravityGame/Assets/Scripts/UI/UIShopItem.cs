@@ -2,9 +2,9 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+using UnityEngine.EventSystems;
 
-public class UIShopItem : MonoBehaviour
+public class UIShopItem : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private ShopItem shopItem;
     public ShopItem ShopItem { get { return shopItem; } }
@@ -13,15 +13,6 @@ public class UIShopItem : MonoBehaviour
     private Image imgIcon;
     [SerializeField]
     private TextMeshProUGUI txtName;
-    [SerializeField]
-    private TextMeshProUGUI txtDescription;
-
-    [SerializeField]
-    private Transform elementContainer;
-
-    [SerializeField]
-    private UICost uiCostPrefab;
-    private List<UICost> costs = new();
 
     private bool isBought = false;
     public void Initialize(ShopItem newShopItem)
@@ -29,14 +20,6 @@ public class UIShopItem : MonoBehaviour
         shopItem = newShopItem;
         imgIcon.sprite = shopItem.Icon;
         txtName.text = shopItem.Name;
-        txtDescription.text = shopItem.Description;
-
-        foreach (var cost in shopItem.Cost.Costs)
-        {
-            var uiCost = Instantiate(uiCostPrefab, elementContainer);
-            uiCost.Initialize(cost);
-            costs.Add(uiCost);
-        }
     }
 
     public void MarkAsBought() {
@@ -44,5 +27,19 @@ public class UIShopItem : MonoBehaviour
         isBought = true;
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        //throw new System.NotImplementedException();
+    }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //throw new System.NotImplementedException();
+        UIManager.main.ShowShopItem(shopItem);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        //throw new System.NotImplementedException();
+    }
 }

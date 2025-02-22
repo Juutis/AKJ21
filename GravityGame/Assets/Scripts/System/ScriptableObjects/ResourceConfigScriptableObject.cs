@@ -18,5 +18,6 @@ public enum ResourceType
 {
     Hydrogen,
     Titanium,
-    Crystal
+    Crystal,
+    Gobbonium
 }
