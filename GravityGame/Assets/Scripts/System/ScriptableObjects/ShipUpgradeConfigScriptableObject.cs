@@ -1,17 +1,20 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ShipUpgradeConfig", menuName = "Configs/ShipUpgrade", order = -1),]
+[CreateAssetMenu(fileName = "ShipUpgradeConfig", menuName = "Configs/ShipUpgrade"),]
 public class ShipUpgradeConfigScriptableObject : ScriptableObject
 {
+    public ShipUpgradeTypeConfigScriptableObject TypeConfig;
     public string Name;
     [TextArea]
     public string Description;
-    public Sprite Icon;
+    public Sprite Icon { get { return TypeConfig.Icon; } }
 
-    public ShipUpgradeType UpgradeType;
+    public ShipUpgradeType UpgradeType { get { return TypeConfig.UpgradeType; } }
 
     [Range(1, 5)]
     public int UpgradeTier = 1;
+
+    public int IntValue;
 
     public ShopCost Cost;
 
@@ -20,9 +23,10 @@ public class ShipUpgradeConfigScriptableObject : ScriptableObject
 
 
 public enum ShipUpgradeType {
-    Guns,
+    Cannon,
     Storage,
     Shield,
     Laser,
-    Engine
+    Engine,
+    Harvester
 }

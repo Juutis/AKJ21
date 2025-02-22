@@ -12,7 +12,7 @@ public class UIButton : MonoBehaviour
     private Button button;
 
     public void PerformAction() {
-        
+        Action.Invoke();
     }
 
 }
