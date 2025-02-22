@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6786689784942046344}
   - component: {fileID: 5530193533696673953}
   - component: {fileID: 6664326591293643986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HydrogenAsteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
