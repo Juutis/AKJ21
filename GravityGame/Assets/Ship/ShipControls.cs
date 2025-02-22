@@ -84,6 +84,16 @@ public class ShipControls : MonoBehaviour
     {
         var targetSpeed = shipMesh.transform.forward * speed;
         rb.linearVelocity = Vector3.RotateTowards(rb.linearVelocity, targetSpeed, 2.0f * Time.deltaTime, 2.0f * Time.deltaTime);
+
+        var worldOrigin = WorldOrigin.OfActiveWorld;
+        var diff = worldOrigin.transform.position - transform.position;
+        var dist = diff.magnitude;
+        if (dist > worldOrigin.WorldRadius) {
+            var t = (dist - worldOrigin.WorldRadius) / 100.0f;
+            t = Mathf.Clamp01(t);
+            rb.AddForce(diff.normalized * t * 1000.0f, ForceMode.Acceleration);
+        }
+        worldOrigin.SetPlayerDistance(dist);
     }
 
     private float minZoom = 2.0f;
