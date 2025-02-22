@@ -16,5 +16,6 @@ MonoBehaviour:
   Description: Titanium is abundant within certain types of asteroid and when refined
     a very useful metal in all areas of shipbuilding.
   Icon: {fileID: 21300000, guid: be39c231a7206d845a3b68d4730ebf18, type: 3}
-  ResourceType: 0
+  Color: {r: 0, g: 0, b: 0, a: 0}
+  ResourceType: 1
   Weight: 5

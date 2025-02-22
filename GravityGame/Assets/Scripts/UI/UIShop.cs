@@ -1,20 +1,34 @@
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UIShop : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    private UIShopItem uiShopItemPrefab;
+
+    [SerializeField]
+    private Transform elementContainer;
+
+    private List<UIShopItem> shopItems = new();
+
+    public void Initialize(List<ShopItem> items)
     {
-        
+        foreach (var item in items)
+        {
+            var shopItem = Instantiate(uiShopItemPrefab, elementContainer);
+            shopItem.Initialize(item);
+            shopItems.Add(shopItem);
+        }
+    }
+    public void MarkShopItemAsBought(ShopItem shopItem) {
+        var item = shopItems.FirstOrDefault(i => i.ShopItem == shopItem);
+        if (item != null) {
+            item.MarkAsBought();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Buy() {
+    public void ShowItem(ShopItem shopItem) {
         
     }
 }

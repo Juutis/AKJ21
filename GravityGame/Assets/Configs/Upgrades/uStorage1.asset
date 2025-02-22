@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc06c69124d1389428ba186ef723684e, type: 3}
-  m_Name: ShipUpgradeConfig
+  m_Name: uStorage1
   m_EditorClassIdentifier: 
-  Name: PlasmaCannon Mk. II
-  Description: 
-  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  UpgradeType: 0
+  TypeConfig: {fileID: 11400000, guid: e54da47d6788fc643802859b86cfb112, type: 2}
+  Name: Storage
+  Description: Ship storage. Haul more things!
   UpgradeTier: 1
   Cost:
     costs:
-    - resourceType: 0
-      amount: 5
     - resourceType: 1
-      amount: 10
+      amount: 25

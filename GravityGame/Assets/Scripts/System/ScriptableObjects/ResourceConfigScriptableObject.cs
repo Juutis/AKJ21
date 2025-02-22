@@ -7,6 +7,7 @@ public class ResourceConfigScriptableObject : ScriptableObject
     [TextArea]
     public string Description;
     public Sprite Icon;
+    public Color Color;
 
     public ResourceType ResourceType;
 
