@@ -78,11 +78,9 @@ public class TargetCursors : MonoBehaviour
 
             if (vpPos.z < 0 && entry.Key == "Respawn")
             {
-                Debug.Log($"LOL");
             }
             else if (entry.Key == "Respawn")
             {
-                Debug.Log("NOT LOL");
 
             }
 

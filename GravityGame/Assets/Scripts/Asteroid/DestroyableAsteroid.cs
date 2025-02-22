@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class DestroyableAsteroid : MonoBehaviour
 {
     [SerializeField]
-    private int HP;
+    private int maxHP;
+    private int currentHP;
     [SerializeField]
     private List<DropRate> dropRates = new();
 
@@ -15,12 +17,15 @@ public class DestroyableAsteroid : MonoBehaviour
 
     private List<GameObject> pieces = new();
     private List<Material> materials = new();
+    private Dictionary<Material, Color> matColorCache = new();
     private float lastHit = 0f;
     private float hitCD = 2f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentHP = maxHP;
+
         foreach (Transform wrapper in transform)
         {
             foreach (Transform child in wrapper.transform)
@@ -29,6 +34,8 @@ public class DestroyableAsteroid : MonoBehaviour
                 {
                     pieces.Add(childMesh.gameObject);
                     materials.AddRange(childMesh.materials);
+
+                    childMesh.materials.ToList().ForEach(x => matColorCache.Add(x, x.color));
                 }
             }
         }
@@ -60,14 +67,15 @@ public class DestroyableAsteroid : MonoBehaviour
 
         lastHit = Time.time;
 
-        HP--;
+        currentHP--;
 
         foreach (Material material in materials)
         {
-            StartCoroutine(LerpMat(material, material.color, Color.red));
+            material.color = Color.Lerp(matColorCache[material], Color.red, ((float)maxHP - currentHP)/maxHP * 0.666f);
+            Debug.Log($"Color Lerp: {((float)maxHP - currentHP) / maxHP * 0.8f}, {maxHP}, {currentHP}");
         }
 
-        if (HP <= 0)
+        if (currentHP <= 0)
         {
             Explode();
         }
@@ -111,18 +119,7 @@ public class DestroyableAsteroid : MonoBehaviour
         {
             drop.isKinematic = false;
         }
-    }
-
-    private IEnumerator LerpMat(Material mat, Color a, Color b)
-    {
-        for (float i = 0; i < 1; i += 0.01f)
-        {
-            mat.color = Color.Lerp(a, b, i);
-            yield return new WaitForSeconds(0.01f);
-        }
-
-        mat.color = a;
-    }
+    }   
 
     private void OnCollisionEnter(Collision collision)
     {
