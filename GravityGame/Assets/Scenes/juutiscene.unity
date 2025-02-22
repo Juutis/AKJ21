@@ -1446,42 +1446,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorldOrigin
       objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: maxColor.a
-      value: 0.2784314
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: maxColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: maxColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: minColor.a
-      value: 0.011764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: minColor.b
-      value: 0.7830189
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: minColor.g
-      value: 0.7830189
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: minColor.r
-      value: 0.7830189
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
-      propertyPath: WorldRadius
-      value: 500
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
