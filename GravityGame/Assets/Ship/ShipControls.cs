@@ -76,14 +76,26 @@ public class ShipControls : MonoBehaviour
         shipMesh.transform.Rotate(Vector3.right, pitch);
         shipMesh.transform.Rotate(-Vector3.up, yaw);
         
-        xInput = Mathf.MoveTowards(xInput, 0.0f, 40f * Time.deltaTime);
-        yInput = Mathf.MoveTowards(yInput, 0.0f, 20f * Time.deltaTime);
+        //xInput = Mathf.MoveTowards(xInput, 0.0f, 40f * Time.deltaTime);
+        //yInput = Mathf.MoveTowards(yInput, 0.0f, 20f * Time.deltaTime);
+        xInput = xInput * Mathf.Pow(0.9f, Time.deltaTime*30);
+        yInput = yInput * Mathf.Pow(0.9f, Time.deltaTime*30);
     }
 
     void FixedUpdate()
     {
         var targetSpeed = shipMesh.transform.forward * speed;
         rb.linearVelocity = Vector3.RotateTowards(rb.linearVelocity, targetSpeed, 2.0f * Time.deltaTime, 2.0f * Time.deltaTime);
+
+        var worldOrigin = WorldOrigin.OfActiveWorld;
+        var diff = worldOrigin.transform.position - transform.position;
+        var dist = diff.magnitude;
+        if (dist > worldOrigin.WorldRadius) {
+            var t = (dist - worldOrigin.WorldRadius) / 100.0f;
+            t = Mathf.Clamp01(t);
+            rb.AddForce(diff.normalized * t * 1000.0f, ForceMode.Acceleration);
+        }
+        worldOrigin.SetPlayerDistance(dist);
     }
 
     private float minZoom = 2.0f;
