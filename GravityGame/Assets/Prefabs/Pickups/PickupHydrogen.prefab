@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 4493734267766071798}
   - component: {fileID: 2644070861301988339}
   - component: {fileID: 7268205257952579657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PickupHydrogen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
