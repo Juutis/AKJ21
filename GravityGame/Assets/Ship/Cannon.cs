@@ -13,6 +13,11 @@ public class Cannon : MonoBehaviour
     [SerializeField]
     private Transform muzzle;
 
+    
+    [SerializeField]
+    private float bulletSpeed = 100.0f;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,9 +28,11 @@ public class Cannon : MonoBehaviour
     void Update()
     {
     }
+    
 
-    public void Fire() {
+    public void Fire(float variance = 0) {
         var bullet = Instantiate(bulletPrefab);
-        bullet.Init(muzzle.position, transform.forward * 100.0f);
+        var direction = transform.forward + Random.Range(-variance, variance) * transform.right + Random.Range(-variance, variance) * transform.up;
+        bullet.Init(muzzle.position, direction.normalized * bulletSpeed);
     }
 }
