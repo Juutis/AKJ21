@@ -82,7 +82,8 @@ public class ShipControls : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = shipMesh.transform.forward * speed;
+        var targetSpeed = shipMesh.transform.forward * speed;
+        rb.linearVelocity = Vector3.RotateTowards(rb.linearVelocity, targetSpeed, 2.0f * Time.deltaTime, 2.0f * Time.deltaTime);
     }
 
     private float minZoom = 2.0f;
@@ -109,6 +110,7 @@ public class ShipControls : MonoBehaviour
     void handleAcceleration() {
         var input = Input.GetAxis("Vertical");
         speed += input * Time.deltaTime * 10.0f;
+        speed = Mathf.MoveTowards(speed, 0.0f, 5.0f * Time.deltaTime);
         speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
         if (input > 0.0f) {
             booster.Play();

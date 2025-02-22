@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8220789087452999210}
   - component: {fileID: 3586243140463295681}
   - component: {fileID: 8327556824628002565}
+  - component: {fileID: 7611528387550928711}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -109,6 +110,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   harvestRadius: 4
+--- !u!135 &7611528387550928711
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690361430817125412}
+  m_Material: {fileID: 13400000, guid: acb57c76799c9874c906e868630ad004, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.53807557
+  m_Center: {x: 0, y: 0, z: -0.14200674}
 --- !u!1 &6339380551495876889
 GameObject:
   m_ObjectHideFlags: 0
