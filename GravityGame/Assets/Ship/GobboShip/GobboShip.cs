@@ -5,14 +5,14 @@ public class GobboShip : MonoBehaviour
     [SerializeField]
     private Cannon cannon;
 
-    private float shootInterval = 0.1f;
+    private float shootInterval = 0.5f;
     private float shootTimer = 0.0f;
 
     private GameObject player;
 
     private float maxShootDistance = 100.0f;
     private float maxShootAngle = 30.0f;
-    private float rotateSpeed = 1.0f;
+    private float rotateSpeed = 90.0f;
 
     private Rigidbody rb;
 
@@ -35,12 +35,16 @@ public class GobboShip : MonoBehaviour
     void FixedUpdate()
     {
         var gobboToPlayer = player.transform.position - transform.position;
-        rb.linearVelocity = gobboToPlayer.normalized * moveSpeed;
+        var distance = gobboToPlayer.magnitude;
+        var t = distance / 20.0f;
+        var ms = Mathf.Lerp(-moveSpeed, moveSpeed, t);
+        rb.linearVelocity = gobboToPlayer.normalized * ms;
     }
 
     private void rotateTowardsPlayer() {
         var gobboToPlayer = player.transform.position - transform.position;
-        transform.forward = Vector3.RotateTowards(transform.forward, gobboToPlayer, rotateSpeed * Time.deltaTime, 0.0f);
+        var targetRotation = Quaternion.LookRotation(gobboToPlayer, player.transform.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
     }
 
     private void handleShooting() {
