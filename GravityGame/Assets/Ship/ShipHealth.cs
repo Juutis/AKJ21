@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 public class ShipHealth : MonoBehaviour
 {
@@ -51,11 +50,6 @@ public class ShipHealth : MonoBehaviour
 
     void Update()
     {
-        #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.P)) {
-            currentHP--;
-        }
-        #endif
         if (!isRecharging) {
             if (currentHP < maxHP) {
                 isRecharging = true;

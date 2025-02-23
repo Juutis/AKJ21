@@ -25,16 +25,11 @@ public class UIStartGame : MonoBehaviour
     void Start()
     {
         originalScroll = scrollRt.anchoredPosition;
-        #if UNITY_EDITOR
-                Time.timeScale = 1f;
-                gameObject.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                MusicPlayer.main.PlayMusic(MusicType.Game);
-#else
-                MusicPlayer.main.PlayMusic(MusicType.MainMenu);
-                Time.timeScale = 0f;
-                container.SetActive(true);
-#endif
+
+        MusicPlayer.main.PlayMusic(MusicType.MainMenu);
+        Time.timeScale = 0f;
+        container.SetActive(true);
+
         button.SetActive(false);
         LevelGenerator.main.NextLevel();
         Cursor.lockState = CursorLockMode.None;

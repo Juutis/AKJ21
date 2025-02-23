@@ -47,16 +47,7 @@ public class Turret : MonoBehaviour
             }
         }
 
-        foreach (DropRate dropRate in dropRates)
-        {
-            if (dropRate.Chance > Random.value)
-            {
-                GameObject drop = Instantiate(dropRate.Prefab);
-                drops.Add(drop.GetComponent<Rigidbody>());
-                drop.transform.position = transform.position + Random.onUnitSphere * 0.5f;
-                drop.SetActive(false);
-            }
-        }
+
     }
 
     // Update is called once per frame
@@ -91,7 +82,16 @@ public class Turret : MonoBehaviour
         var explosion = Instantiate(dieExplosionPrefab);
         explosion.transform.position = transform.position;
         Destroy(gameObject);
-
+        foreach (DropRate dropRate in dropRates)
+        {
+            if (dropRate.Chance > Random.value)
+            {
+                GameObject drop = Instantiate(dropRate.Prefab);
+                drops.Add(drop.GetComponent<Rigidbody>());
+                drop.transform.position = transform.position + Random.onUnitSphere * 0.5f;
+                drop.SetActive(false);
+            }
+        }
         foreach (Rigidbody drop in drops)
         {
             Invoke("DisableDropBodies", 1f);

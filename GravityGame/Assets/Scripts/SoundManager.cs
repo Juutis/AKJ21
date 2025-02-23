@@ -32,10 +32,10 @@ public class SoundManager : MonoBehaviour
             AudioSource audio = gameSound.Get();
             if (audio != null)
             {
-                audio.pitch = 1f;
+                //audio.pitch = 1f;
                 if (gameSound.RandomizePitch)
                 {
-                    audio.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                    audio.pitch = UnityEngine.Random.Range(0.95f, 1.1f);
                 }
                 audio.Play();
             }
