@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: e54da47d6788fc643802859b86cfb112, type: 2}
   Name: Storage
-  Description: Ship storage. Haul more things!
+  Description: With some neutron-tech and magic, your boxes are bigger on the inside.
   UpgradeTier: 1
   IntValue: 30
   Cost:

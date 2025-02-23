@@ -60,6 +60,10 @@ public class ShipControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.I)) {
+            UIManager.main.InvertY = !UIManager.main.InvertY;
+        }
+
         if (Input.GetKey(KeyCode.Space) && !isDead) {
             if (!laserParticles.isPlaying) {
                 laserParticles.Play();
