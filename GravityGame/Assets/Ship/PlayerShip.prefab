@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1080453088427529527}
   - component: {fileID: 314398390816752357}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4847,7 +4847,7 @@ GameObject:
   - component: {fileID: 3158718612986476318}
   - component: {fileID: 1193920391274196315}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4885,7 +4885,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -9723,6 +9723,7 @@ MonoBehaviour:
   shipMesh: {fileID: 7801261155927566368}
   thirdPersonCamera: {fileID: 0}
   booster: {fileID: 326977906629019979}
+  laser: {fileID: 1080453088427529527}
 --- !u!54 &8220789087452999210
 Rigidbody:
   m_ObjectHideFlags: 0

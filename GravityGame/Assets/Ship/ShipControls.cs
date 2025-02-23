@@ -34,6 +34,10 @@ public class ShipControls : MonoBehaviour
     [SerializeField]
     private ParticleSystem booster;
 
+    
+    [SerializeField]
+    private ParticleSystem laser;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +50,14 @@ public class ShipControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Space)) {
+            if (!laser.isPlaying) {
+                laser.Play();
+            }
+        } else {
+            laser.Stop();
+        }
+
         handleZoom();
         handleAcceleration();
 
@@ -121,8 +133,9 @@ public class ShipControls : MonoBehaviour
 
     void handleAcceleration() {
         var input = Input.GetAxis("Vertical");
-        speed += input * Time.deltaTime * 10.0f;
-        speed = Mathf.MoveTowards(speed, 0.0f, 5.0f * Time.deltaTime);
+        speed += input * Time.deltaTime * 30.0f;
+        //speed = Mathf.MoveTowards(speed, 0.0f, 5.0f * Time.deltaTime);
+        speed = speed * Mathf.Pow(0.9f, Time.deltaTime*30);
         speed = Mathf.Clamp(speed, minSpeed, maxSpeed);
         if (input > 0.0f) {
             booster.Play();
