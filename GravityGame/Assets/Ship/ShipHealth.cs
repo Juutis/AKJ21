@@ -17,10 +17,22 @@ public class ShipHealth : MonoBehaviour
 
     private float lastHit = 0f;
 
+    [SerializeField]
+    private GameObject shipMesh;
+
+    [SerializeField]
+    private ParticleSystem explosionPrefab;
+
+    private Rigidbody rb;
+
+    [SerializeField]
+    private Transform RespawnPoint;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHP = maxHP;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -50,9 +62,19 @@ public class ShipHealth : MonoBehaviour
         }
     }
 
+    bool alive = true;
+
     private void Explode()
     {
-        Debug.Log("GAME OVER YOU LOST LOSER LOL");
+        if (!alive) {
+            return;
+        }
+        shipMesh.SetActive(false);
+        var explosion = Instantiate(explosionPrefab);
+        explosion.transform.position = transform.position;
+        Invoke("ReSpawn", 3.0f);
+        alive = false;
+        CameraManager.Main.ActivateDeathCam();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,5 +85,16 @@ public class ShipHealth : MonoBehaviour
             var bullet = other.GetComponent<Bullet>();
             bullet.Kill();
         }
+    }
+    
+
+    public void ReSpawn() {
+        alive = true;
+        currentHP = maxHP;
+        shipMesh.SetActive(true);
+        transform.position = RespawnPoint.position;
+        transform.rotation = RespawnPoint.rotation;
+        rb.position = RespawnPoint.transform.position;
+        rb.rotation = RespawnPoint.rotation;
     }
 }

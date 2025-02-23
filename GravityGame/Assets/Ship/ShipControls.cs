@@ -39,6 +39,8 @@ public class ShipControls : MonoBehaviour
     private ParticleSystem laserParticles;
     private Laser laser;
 
+    public bool isDead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,7 +55,7 @@ public class ShipControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.Space) && !isDead) {
             if (!laserParticles.isPlaying) {
                 laserParticles.Play();
                 laser.Activate();
@@ -63,10 +65,6 @@ public class ShipControls : MonoBehaviour
             laser.Deactivate();
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) {
-            transform.position = Vector3.zero;
-        }
-
         handleZoom();
         handleAcceleration();
 
@@ -74,8 +72,14 @@ public class ShipControls : MonoBehaviour
         var x = Input.GetAxisRaw("Mouse X");
         var y = Input.GetAxisRaw("Mouse Y");
         var z = Input.GetAxis("Horizontal");
-        if(UIManager.main.InvertY) y = -y;
+        //if(UIManager.main.InvertY) y = -y;
         
+        if (isDead) {
+            x = 0;
+            y = 0;
+            z = 0;
+        }
+
         xInput += x;
         yInput += y;
 
