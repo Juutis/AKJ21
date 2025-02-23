@@ -8,7 +8,10 @@ public class GobboSpawnArea : MonoBehaviour
     private float triggerRadius = 30.0f;
 
     [SerializeField]
-    private float spawnRadius = 10.0f;
+    private float minSpawnRadius = 0.0f;
+
+    [SerializeField]
+    private float maxSpawnRadius = 10.0f;
 
     [SerializeField]
     private float resetDistance = 200.0f;
@@ -42,9 +45,9 @@ public class GobboSpawnArea : MonoBehaviour
 
     private void spawn() {
         foreach(var prefab in stuffToSpawn) {
-            var offset = Random.insideUnitSphere * spawnRadius;
-            Instantiate(prefab, transform.parent);
-            prefab.transform.position = transform.position + offset;
+            var offset = Random.onUnitSphere * Random.Range(minSpawnRadius, maxSpawnRadius);
+            var gobbo = Instantiate(prefab, transform.parent);
+            gobbo.transform.position = transform.position + offset;
         }
     }
 }
