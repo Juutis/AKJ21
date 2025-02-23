@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Storage Mk. II
   Description: With some neutron-tech and magic, your boxes are bigger on the inside.
   UpgradeTier: 2
-  IntValue: 30
+  IntValue: 60
   Cost:
     costs:
     - resourceType: 1
