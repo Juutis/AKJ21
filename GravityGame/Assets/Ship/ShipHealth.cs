@@ -12,7 +12,7 @@ public class ShipHealth : MonoBehaviour
     private float shieldRechargeCD;
 
     [SerializeField]
-    private float hitCD = 1f;
+    private float hitCD = 0.25f;
 
     private float lastHit = 0f;
 
