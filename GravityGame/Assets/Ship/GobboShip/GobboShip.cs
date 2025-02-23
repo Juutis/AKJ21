@@ -1,8 +1,6 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 public class GobboShip : MonoBehaviour
 {
@@ -35,7 +33,7 @@ public class GobboShip : MonoBehaviour
     private List<Material> materials = new();
     private Dictionary<Material, Color> matColorCache = new();
     private float lastHit = 0f;
-    private float hitCD = 2f;
+    private float hitCD = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -88,7 +86,7 @@ public class GobboShip : MonoBehaviour
 
     private void rotateTowardsPlayer() {
         var gobboToPlayer = player.transform.position - transform.position;
-        var targetRotation = Quaternion.LookRotation(gobboToPlayer, player.transform.up);
+        var targetRotation = Quaternion.LookRotation(gobboToPlayer, alignTransform.transform.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
     }
 
