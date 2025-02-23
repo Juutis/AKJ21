@@ -114,6 +114,8 @@ public class ShipControls : MonoBehaviour
         //yInput = Mathf.MoveTowards(yInput, 0.0f, 20f * Time.deltaTime);
         xInput = xInput * Mathf.Pow(0.95f, Time.deltaTime*30);
         yInput = yInput * Mathf.Pow(0.95f, Time.deltaTime*30);
+
+
     }
 
     void FixedUpdate()
@@ -178,11 +180,18 @@ public class ShipControls : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Portal"))
         {
-            if (SceneManager.GetActiveScene().buildIndex + 1 > 2) {
-                UIManager.main.TheEnd();
-            } else {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
+            NextLevel();
+        }
+    }
+
+    public void NextLevel() {
+        if (SceneManager.GetActiveScene().buildIndex + 1 > 2)
+        {
+            UIManager.main.TheEnd();
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

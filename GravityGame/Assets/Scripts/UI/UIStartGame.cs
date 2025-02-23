@@ -39,7 +39,8 @@ if ( SceneManager.GetActiveScene().name == "Level1") {
         Time.timeScale = 1f;
         container.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-}
+        imgCursor.enabled = false;
+    }
         button.SetActive(false);
         LevelGenerator.main.NextLevel();
 
@@ -98,7 +99,9 @@ if ( SceneManager.GetActiveScene().name == "Level1") {
             }
         }
 
-        Cursor.lockState = CursorLockMode.None;
-        imgCursor.transform.position = Input.mousePosition;
+        if(container.activeSelf) {
+            Cursor.lockState = CursorLockMode.None;
+            imgCursor.transform.position = Input.mousePosition;
+        }
     }
 }
