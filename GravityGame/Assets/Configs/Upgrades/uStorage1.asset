@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: uStorage1
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: e54da47d6788fc643802859b86cfb112, type: 2}
-  Name: Storage
+  Name: Storage Mk. I
   Description: With some further attachments, your storage boxes can store a bit
     more stuff.
   UpgradeTier: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: uShield1
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: 9d00357687b0398488ca41054db7e501, type: 2}
-  Name: Shield II
+  Name: Shield Mk. I
   Description: Your shield is a bit tougher, and can take slightly more damage.
   UpgradeTier: 1
   IntValue: 7
