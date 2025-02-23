@@ -258,8 +258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dacf342fec2d04896da76e1b01a978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 1
-  worldContainer: {fileID: 6827621690798467132}
   levels:
   - Layers:
     - MinRadius: 50
@@ -442,8 +440,7 @@ MonoBehaviour:
   shipInventory: {fileID: 3888314508555798053}
   shipUpgradeManager: {fileID: 7653855528101357892}
   shopItemPrefab: {fileID: 5202199085882431844, guid: f145dc5af4d1b4442bae086fd0306ffc, type: 3}
-  homeBase: {fileID: 0}
-  distanceFromShopToEnter: 20
+  distanceFromShopToEnter: 5
   elementContainer: {fileID: 4966029458490383236}
   upgrades:
   - {fileID: 11400000, guid: dbec189143b7e7845bb1bd85844cd884, type: 2}
