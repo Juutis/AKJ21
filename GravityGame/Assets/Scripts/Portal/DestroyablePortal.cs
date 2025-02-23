@@ -28,6 +28,7 @@ public class DestroyablePortal : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
+        portalTrigger.SetActive(false);
 
         foreach (Transform wrapper in transform)
         {
