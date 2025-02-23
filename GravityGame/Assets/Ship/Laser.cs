@@ -1,0 +1,64 @@
+using System.Linq;
+using UnityEngine;
+
+public class Laser : MonoBehaviour
+{
+    [SerializeField]
+    private float beamLength;
+
+    [SerializeField]
+    private float laserCD;
+    private float lastHit = 0f;
+
+    private bool isActive = false;
+    Transform origin;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isActive && Time.time - lastHit > laserCD)
+        {
+            Pulse();
+        }
+    }
+
+    private void Pulse()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(origin.position, origin.forward, beamLength, LayerMask.GetMask("Destroyable"));
+        Debug.DrawRay(origin.position, origin.forward, Color.red);
+
+        if (hits.Length == 0)
+        {
+            return;
+        }
+
+        RaycastHit nearest = hits.OrderBy(x => x.distance).FirstOrDefault(x => x.collider != null);
+
+        if (nearest.collider.gameObject.TryGetComponent(out DestroyableAsteroid destroyable))
+        {
+            destroyable.Hit();
+        }
+    }
+
+    public void Activate()
+    {
+        lastHit = Time.time;
+        isActive = true;
+    }
+
+    public void Deactivate()
+    {
+        isActive = false;
+    }
+
+    public void SetOrigin(Transform origin)
+    {
+        this.origin = origin;
+    }
+}

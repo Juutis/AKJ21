@@ -36,7 +36,8 @@ public class ShipControls : MonoBehaviour
 
     
     [SerializeField]
-    private ParticleSystem laser;
+    private ParticleSystem laserParticles;
+    private Laser laser;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,17 +46,21 @@ public class ShipControls : MonoBehaviour
         forward = transform.rotation;
         Cursor.lockState = CursorLockMode.Locked;
         zoom = thirdPersonCamera.CameraDistance;
+        laser = GetComponent<Laser>();
+        laser.SetOrigin(laserParticles.transform);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.Space)) {
-            if (!laser.isPlaying) {
-                laser.Play();
+            if (!laserParticles.isPlaying) {
+                laserParticles.Play();
+                laser.Activate();
             }
         } else {
-            laser.Stop();
+            laserParticles.Stop();
+            laser.Deactivate();
         }
 
         handleZoom();
