@@ -74,6 +74,7 @@ MonoBehaviour:
     Prefab: {fileID: 4466171028987894061, guid: b9d9ae9d13453f34588d939eda596aa1, type: 3}
   - Chance: 0.5
     Prefab: {fileID: 4466171028987894061, guid: b9d9ae9d13453f34588d939eda596aa1, type: 3}
+  explosionPrefab: {fileID: 1911289480990926424, guid: 52d41c82c868b3443ae13587827fd1c6, type: 3}
 --- !u!114 &5476349499506896139
 MonoBehaviour:
   m_ObjectHideFlags: 0
