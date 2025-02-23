@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: 8f400b1405c2a6c48b2752080fdb0e46, type: 2}
   Name: Laser II
-  Description: Laser II
+  Description: Upgraded laser to take on even tougher materials.
   UpgradeTier: 1
   IntValue: 2
   Cost:

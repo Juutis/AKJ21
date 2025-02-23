@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: 9d00357687b0398488ca41054db7e501, type: 2}
   Name: Shield III
-  Description: 'Shield strength: 10'
+  Description: Shield fully upgaded. Can take significant punishment before caving
+    in.
   UpgradeTier: 2
   IntValue: 10
   Cost:
