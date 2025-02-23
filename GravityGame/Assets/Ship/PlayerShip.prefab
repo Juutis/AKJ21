@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7425587334930807196}
   - component: {fileID: 1080453088427529527}
   - component: {fileID: 314398390816752357}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4846,7 +4846,7 @@ GameObject:
   - component: {fileID: 7279970814274333599}
   - component: {fileID: 3158718612986476318}
   - component: {fileID: 1193920391274196315}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9685,7 +9685,7 @@ GameObject:
   - component: {fileID: 7611528387550928711}
   - component: {fileID: -3051096939492254530}
   - component: {fileID: 4361899359483589953}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9836,7 +9836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beamLength: 80
-  probeLength: 0
+  probeLength: 60
   laserCD: 1
 --- !u!1 &6339380551495876889
 GameObject:
@@ -9850,7 +9850,7 @@ GameObject:
   - component: {fileID: 595383524987147377}
   - component: {fileID: 5437099556929873283}
   - component: {fileID: 7115348486272615045}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9955,7 +9955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9018938951776972480}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10049,14 +10049,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: -5568371526223589888, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -10081,17 +10073,9 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 69d590ad3174c11469c173363caea31f, type: 2}
-    - target: {fileID: -516098083770646512, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
       propertyPath: m_Name
       value: DaShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7202271454713460447, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -10105,10 +10089,6 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
       objectReference: {fileID: 2100000, guid: 0cb010257db6b344dbcdea9bf403df2f, type: 2}
-    - target: {fileID: 8416272007918961125, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 8416272007918961125, guid: 43d3da90bcdf1f54ba543c414a844fec, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -10134,10 +10114,6 @@ PrefabInstance:
     - target: {fileID: 1296852897821893860, guid: 30928ec002cdcf245b399498754181e5, type: 3}
       propertyPath: m_Name
       value: TrailRenderer
-      objectReference: {fileID: 0}
-    - target: {fileID: 1296852897821893860, guid: 30928ec002cdcf245b399498754181e5, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4445936078090410275, guid: 30928ec002cdcf245b399498754181e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10201,10 +10177,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: cannon
       objectReference: {fileID: 0}
-    - target: {fileID: 2345287013014513104, guid: ed0497947cf2dcb4090cd25c4d0311d8, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 3372731894591936397, guid: ed0497947cf2dcb4090cd25c4d0311d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.721
@@ -10245,10 +10217,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5945742347829462153, guid: ed0497947cf2dcb4090cd25c4d0311d8, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10281,10 +10249,6 @@ PrefabInstance:
     - target: {fileID: 6528311376101605198, guid: a206a8945006a7d4aa09997e0c42e51f, type: 3}
       propertyPath: m_Name
       value: Backburner
-      objectReference: {fileID: 0}
-    - target: {fileID: 6528311376101605198, guid: a206a8945006a7d4aa09997e0c42e51f, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8033310865047377193, guid: a206a8945006a7d4aa09997e0c42e51f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10353,10 +10317,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: cannon (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 2345287013014513104, guid: ed0497947cf2dcb4090cd25c4d0311d8, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 3372731894591936397, guid: ed0497947cf2dcb4090cd25c4d0311d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.729
@@ -10397,10 +10357,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5945742347829462153, guid: ed0497947cf2dcb4090cd25c4d0311d8, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10433,10 +10389,6 @@ PrefabInstance:
     - target: {fileID: 1296852897821893860, guid: 30928ec002cdcf245b399498754181e5, type: 3}
       propertyPath: m_Name
       value: TrailRenderer (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1296852897821893860, guid: 30928ec002cdcf245b399498754181e5, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4445936078090410275, guid: 30928ec002cdcf245b399498754181e5, type: 3}
       propertyPath: m_LocalPosition.x

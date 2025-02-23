@@ -27,7 +27,6 @@ public class UIManager: MonoBehaviour {
     [SerializeField]
     private UIEndGame uiTheEnd;
 
-    private bool storageFullMessage = false;
 
     public bool InvertY = false;
 

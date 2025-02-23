@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIShop : MonoBehaviour
 {
@@ -36,6 +37,9 @@ public class UIShop : MonoBehaviour
 
     private List<List<ShopItem>> itemGroups = new();
 
+    [SerializeField]
+    private TextMeshProUGUI messageDisplay;
+
     private UIShopItemDetails shopItemDetails;
 
     [SerializeField]
@@ -56,7 +60,8 @@ public class UIShop : MonoBehaviour
             Destroy(shopItemDetails.gameObject);
         }
         IsShown = true;
-        Shop.main.TransferShipResourcesToBase();
+        string message = Shop.main.TransferShipResourcesToBase();
+        ShopMessage(message);
         animator.Play("shopShow");
         imgCursor.enabled = true;
         buyButton.gameObject.SetActive(false);
@@ -67,7 +72,11 @@ public class UIShop : MonoBehaviour
         elementContainer.gameObject.SetActive(true);
     }
 
-    public void Hide() {
+    public void ShopMessage(string message) {
+        messageDisplay.text = $"{message}";
+    }
+
+     public void Hide() {
         animator.Play("shopHide");
         imgCursor.enabled = false;
         container.gameObject.SetActive(false);
@@ -106,11 +115,11 @@ public class UIShop : MonoBehaviour
             return;
         }
         if (Shop.main.Buy(selectedShopItem)) {
-            UIManager.main.ShowMessage($"Bought {selectedShopItem.Name}!");
+            ShopMessage($"Bought \"{selectedShopItem.Name}\"!");
             shopItemDetails.Bought();
             buyButton.gameObject.SetActive(false);
         } else {
-            UIManager.main.ShowMessage($"Can't afford it!");
+            ShopMessage($"Can't afford \"{selectedShopItem.Name}\" ");
         }
     }
 
