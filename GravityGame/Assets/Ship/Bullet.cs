@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
         rb.position = position;
         rb.linearVelocity = velocity;
         Invoke("Kill", 5.0f);
-        layerMask = LayerMask.GetMask("Default");
+        layerMask = LayerMask.GetMask("Default", "Destroyable");
     }
 
     public void Kill() {
