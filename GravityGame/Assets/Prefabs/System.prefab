@@ -346,7 +346,7 @@ MonoBehaviour:
       - Count: 8
         Prefab: {fileID: 2969813555231660389, guid: 31881417978c0a347914ced6c385e833, type: 3}
   - Layers:
-    - MinRadius: 20
+    - MinRadius: 50
       MaxRadius: 125
       Spawns:
       - Count: 5
