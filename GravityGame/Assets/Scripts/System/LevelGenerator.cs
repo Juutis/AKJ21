@@ -15,14 +15,10 @@ public class LevelGenerator : MonoBehaviour
 
     private int currentLevel = -1;
 
-    public int Level = 0;
-
-    [SerializeField]
-    private Transform worldContainer;
     [SerializeField]
     private List<LevelGeneratorLevel> levels = new();
     public void NextLevel() {
-        int nextLevel = Level;
+        int nextLevel = currentLevel + 1;
         Debug.Log($"Next level: {nextLevel}");
         if (levels.Count > nextLevel) {
             currentLevel  = nextLevel;
@@ -82,6 +78,7 @@ public class LevelGenerator : MonoBehaviour
     private void ProcessSpawn(GameObject spawn) {
         // process spawn
     }
+
 }
 
 
