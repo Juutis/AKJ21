@@ -3,9 +3,8 @@ using UnityEngine.InputSystem.HID;
 
 public class ShipHealth : MonoBehaviour
 {
-    [SerializeField]
-    private float maxHP;
-    private float currentHP;
+    private int maxHP = 1;
+    private int currentHP;
 
     [SerializeField]
     private float shieldRechargeAmount;
@@ -28,18 +27,55 @@ public class ShipHealth : MonoBehaviour
     [SerializeField]
     private Transform RespawnPoint;
 
+    public int MaxHp {get {return maxHP;}}
+    public int CurrentHp {get {return currentHP;}}
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHP = maxHP;
         rb = GetComponent<Rigidbody>();
+        UpdateShield();
     }
 
-    // Update is called once per frame
+    [SerializeField]
+    float hpRechargeInterval = 0.5f;
+    float hpRechargeTimer = 0f;
+    bool isRecharging = false;
+
+    public void UpdateShield() {
+        ShipUpgrade upgrade = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Shield);
+        maxHP = upgrade.IntValue;
+    }
+
     void Update()
     {
-        
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P)) {
+            currentHP--;
+        }
+        #endif
+        if (!isRecharging) {
+            if (currentHP < maxHP) {
+                isRecharging = true;
+                hpRechargeTimer = 0f;
+            }
+        }
+        hpRechargeTimer += Time.deltaTime;
+
+        if (hpRechargeTimer > hpRechargeInterval) {
+            GainHealth();
+            isRecharging = false;
+        }
     }
+
+    public void GainHealth() {
+        currentHP += 1;
+        if (currentHP > maxHP) {
+            currentHP = maxHP;
+        }
+    }
+
     private void Hit()
     {
         if (Time.time - lastHit < hitCD)

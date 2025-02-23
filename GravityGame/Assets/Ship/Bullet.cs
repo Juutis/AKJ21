@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
         rb.position = position;
         rb.linearVelocity = velocity;
         Invoke("Kill", 5.0f);
-        layerMask = LayerMask.GetMask("Default");
+        layerMask = LayerMask.GetMask("Default", "Destroyable");
     }
 
     public void Kill() {
@@ -32,8 +32,18 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(transform.position, transform.forward, rb.linearVelocity.magnitude * Time.deltaTime, layerMask)) {
+        RaycastHit hitInfo;
+        var t = rb.linearVelocity.magnitude * Time.deltaTime;
+        var dir = rb.linearVelocity.normalized;
+        if (Physics.Raycast(transform.position - dir * t, dir, out hitInfo, t * 3, layerMask)) {
+            transform.position = hitInfo.point;
+            rb.position = hitInfo.point;
             Kill();
         }
+    }
+
+    void FixedUpdate()
+    {
+
     }
 }

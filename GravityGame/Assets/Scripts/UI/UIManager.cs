@@ -27,7 +27,6 @@ public class UIManager: MonoBehaviour {
     [SerializeField]
     private UIEndGame uiTheEnd;
 
-    private bool storageFullMessage = false;
 
     public bool InvertY = false;
 
@@ -42,8 +41,10 @@ public class UIManager: MonoBehaviour {
 
     void Update()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         // test endgame
+        Shop.main.AddResourceToShip(ResourceType.Hydrogen, 20);
+        //Shop.main.AddResourceToShip(ResourceType.Titanium, 1);
         if (Input.GetKeyDown(KeyCode.Q)) {
             TheEnd();
         }

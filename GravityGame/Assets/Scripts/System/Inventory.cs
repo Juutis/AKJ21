@@ -5,21 +5,26 @@ using UnityEngine;
 public class Inventory: MonoBehaviour {
 
     private List<InventoryResource> resources = new();
-    private List<ShipUpgradeConfigScriptableObject> upgrades = new();
+
 
     private int defaultStorage = 20;
     public bool IsShipInventory = false;
     public int CurrentWeight { get { return resources.Sum(r => r.Weight); } }
+    ShipUpgrade storageUpgrade;
 
     public int GetMaxStorage() {
         if (!IsShipInventory){
             return int.MaxValue;
         }
-        var storageUpgrade = upgrades.FirstOrDefault(u => u.UpgradeType == ShipUpgradeType.Storage);
         if (storageUpgrade != null) {
             return defaultStorage + storageUpgrade.IntValue;
         }
         return defaultStorage;
+    }
+
+    public void UpdateStorage()
+    {
+        storageUpgrade = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Storage);
     }
 
     public int GetAmount(ResourceType resourceType) {
@@ -39,7 +44,6 @@ public class Inventory: MonoBehaviour {
         }
     }
 
-
     void Update()
     {
 
@@ -52,8 +56,10 @@ public class Inventory: MonoBehaviour {
         }
         UIManager.main.ShowMessage($"Picked up {amount} {resource.Name}");
 
+
         var newResource = AddResourceToStorage(resource, amount);
         UIManager.main.AddResourceToShipInventory(newResource);
+
         return true;
     }
 

@@ -76,6 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee598ac5a9fc7849b7d1dd7599e36d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialUpgrades:
+  - {fileID: 11400000, guid: 53b53137722d42a499083187e543dd38, type: 2}
+  - {fileID: 11400000, guid: e9ee5391d2b71d54b8432bc78b52f985, type: 2}
+  - {fileID: 11400000, guid: e2c30a1688f8b9d4da95ebdae769cc28, type: 2}
+  - {fileID: 11400000, guid: 300d762080a7ad9459ef180dc9263a68, type: 2}
+  - {fileID: 11400000, guid: 0680d67475a0c7942bbdabeac44ab57d, type: 2}
+  - {fileID: 11400000, guid: afbe669567f58c542a3e03aef4f7beb2, type: 2}
   shipUpgradePrefab: {fileID: 3494351041699084087, guid: ddd58b0e1f5f85044ab12663222443f5, type: 3}
   elementContainer: {fileID: 494219151613507109}
 --- !u!1 &1852863299124086176
@@ -323,6 +330,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aed3705706c162b48829c7a431ac7db8, type: 2}
   - {fileID: 11400000, guid: fcc6bba6b6c662d40ba0cffb903644ef, type: 2}
   - {fileID: 11400000, guid: e9ffe85359ca88f45bc55083d2d48189, type: 2}
+  - {fileID: 11400000, guid: fe0309fd8d28a3b408d7ab71954b0847, type: 2}
 --- !u!1 &6917711251876543340
 GameObject:
   m_ObjectHideFlags: 0
