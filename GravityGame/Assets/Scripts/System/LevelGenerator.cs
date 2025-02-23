@@ -30,16 +30,47 @@ public class LevelGenerator : MonoBehaviour
     }
 
     private void GenerateLevel(LevelGeneratorLevel level) {
-        List<Transform> randomedSpots = level.ShuffledSpawnSpots();
-        List<GameObject> spawnPrefabs = level.Spawns;
-        foreach (Transform spotPrefab in randomedSpots) {
-            Transform spot = Instantiate(spotPrefab, worldContainer);
-            GameObject spawnPrefab = spawnPrefabs[0];
-            GameObject spawn = Instantiate(spawnPrefab, spot);
-            spawn.transform.localPosition = Vector3.zero;
-            ProcessSpawn(spawn);
-            spawnPrefabs.RemoveAt(0);
+        List<Vector3> positions = new List<Vector3>();
+        foreach(var layer in level.Layers) {
+
+            foreach (var spawn in layer.Spawns) {
+                for(var i = 0; i < spawn.Count; i++) {
+                    
+                    var attempts = 0;
+                    Vector3 position = Vector3.zero;
+                    while (true) {
+                        var distance = Random.Range(layer.MinRadius, layer.MaxRadius);
+                        var direction = Random.onUnitSphere;
+                        var positionCandidate = level.Origin.transform.position + direction * distance;
+                        if (isOccupied(positionCandidate, positions)) {
+                            attempts++;
+                            if (attempts > 30) {
+                                Debug.LogError("FAILED TO SPAWN OBJECT");
+                                break;
+                            }
+                        } else {
+                            position = positionCandidate;
+                            break;
+                        }
+                    }
+                    positions.Add(position);
+
+                    GameObject spawnedObject = Instantiate(spawn.Prefab);
+                    spawnedObject.transform.position = position;
+                    ProcessSpawn(spawnedObject);
+                }
+            }
         }
+    }
+
+    private bool isOccupied(Vector3 position, List<Vector3> positions) {
+        var margin = 30.0f;
+        foreach (var oldPos in positions) {
+            if (Vector3.Distance(oldPos, position) < margin) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void ProcessSpawn(GameObject spawn) {
@@ -50,17 +81,20 @@ public class LevelGenerator : MonoBehaviour
 
 [System.Serializable]
 public class LevelGeneratorLevel {
-    [SerializeField]
-    private List<Transform> spawnSpots;
+    public List<LevelLayer> Layers;
 
-    [SerializeField]
-    private List<GameObject> spawns;
+    public WorldOrigin Origin;
+}
 
-    public List<GameObject> Spawns {get {return new List<GameObject>(spawns);}}
+[System.Serializable]
+public class LevelLayer {
+    public float MinRadius = 10.0f;
+    public float MaxRadius = 10.0f;
+    public List<LevelSpawn> Spawns;
+}
 
-    public List<Transform> ShuffledSpawnSpots()
-    {
-        System.Random rnd = new();
-        return spawnSpots.OrderBy((item) => rnd.Next()).ToList();
-    }
+[System.Serializable]
+public class LevelSpawn {
+    public int Count;
+    public GameObject Prefab;
 }

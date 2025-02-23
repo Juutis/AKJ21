@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6786689784942046344}
   - component: {fileID: 5530193533696673953}
   - component: {fileID: 6664326591293643986}
+  - component: {fileID: 5476349499506896139}
   m_Layer: 8
   m_Name: HydrogenAsteroid
   m_TagString: Untagged
@@ -73,6 +74,18 @@ MonoBehaviour:
     Prefab: {fileID: 4466171028987894061, guid: b9d9ae9d13453f34588d939eda596aa1, type: 3}
   - Chance: 0.5
     Prefab: {fileID: 4466171028987894061, guid: b9d9ae9d13453f34588d939eda596aa1, type: 3}
+--- !u!114 &5476349499506896139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7982997153483587342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e186c17e36f05d744973fba7ff2a8ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4769964820766072746
 PrefabInstance:
   m_ObjectHideFlags: 0
