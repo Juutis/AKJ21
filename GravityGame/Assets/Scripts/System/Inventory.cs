@@ -22,11 +22,6 @@ public class Inventory: MonoBehaviour {
         return defaultStorage;
     }
 
-    public void UpdateStorage()
-    {
-        storageUpgrade = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Storage);
-    }
-
     public int GetAmount(ResourceType resourceType) {
         var existingResource = resources.FirstOrDefault(r => r.ResourceType == resourceType);
         return existingResource != null ? existingResource.Amount : 0;
@@ -47,6 +42,7 @@ public class Inventory: MonoBehaviour {
     void Update()
     {
 
+        storageUpgrade = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Storage);
     }
 
     private bool AddResourceToShipStorage(Resource resource, int amount) {

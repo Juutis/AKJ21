@@ -74,10 +74,6 @@ public class Shop: MonoBehaviour {
         return shipInventory.AddResource(ResourceManager.main.GetResource(resourceType), amount);
     }
 
-    public void UpdateShipStorage() {
-        shipInventory.UpdateStorage();
-    }
-
     public string TransferShipResourcesToBase() {
         List<string> addedResources = new();
         foreach (var resource in shipInventory.GetAll()) {

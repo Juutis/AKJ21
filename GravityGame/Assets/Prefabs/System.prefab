@@ -179,7 +179,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ffd420bd98576a449195d2d745eb11f, type: 2}
   - {fileID: 11400000, guid: ee4c7c468c1683a4b970ef83aa2713f8, type: 2}
   - {fileID: 11400000, guid: ab980e2131f5087489aac03ea5037eb8, type: 2}
-  - {fileID: 11400000, guid: ab980e2131f5087489aac03ea5037eb8, type: 2}
+  - {fileID: 11400000, guid: 78d74efae9334d04a8a4226d953e8376, type: 2}
   resourcePrefab: {fileID: 7919482101949088510, guid: ad0b274a9b4c7a0429b5e362098dcf59, type: 3}
   elementContainer: {fileID: 1462544440357129333}
 --- !u!1 &4383437080072204622
