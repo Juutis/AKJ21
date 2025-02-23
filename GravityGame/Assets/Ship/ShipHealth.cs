@@ -85,6 +85,7 @@ public class ShipHealth : MonoBehaviour
         }
 
         lastHit = Time.time;
+        SoundManager.main.PlaySound(GameSoundType.Hit);
 
         currentHP--;
 

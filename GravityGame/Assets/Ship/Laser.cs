@@ -74,11 +74,13 @@ public class Laser : MonoBehaviour
     {
         lastHit = Time.time;
         isActive = true;
+        SoundManager.main.PlayLoop(GameSoundType.Laser);
     }
 
     public void Deactivate()
     {
         isActive = false;
+        SoundManager.main.StopLoop(GameSoundType.Laser);
     }
 
     public void SetOrigin(Transform origin)

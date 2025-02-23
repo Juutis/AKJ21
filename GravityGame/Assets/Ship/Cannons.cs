@@ -31,6 +31,7 @@ public class Cannons : MonoBehaviour
 
     public void Shoot() {
         if (shootTimer < Time.time) {
+            SoundManager.main.PlaySound(GameSoundType.Cannon);
             var shootInterval = FireNextCannonGroup();
             shootTimer = Time.time + shootInterval;
         }
