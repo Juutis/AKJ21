@@ -178,7 +178,11 @@ public class ShipControls : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Portal"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (SceneManager.GetActiveScene().buildIndex + 1 > 2) {
+                UIManager.main.TheEnd();
+            } else {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 }
