@@ -22,6 +22,7 @@ public class UIStartGame : MonoBehaviour
         Time.timeScale = 0f;
         container.SetActive(true);
 #endif
+        LevelGenerator.main.NextLevel();
         Cursor.lockState = CursorLockMode.None;
     }
 
