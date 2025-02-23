@@ -327,10 +327,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
-      propertyPath: levels.Array.data[0].Layers.Array.data[3].Spawns.Array.data[7].Count
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[1].Layers.Array.data[0].Spawns.Array.data[0].Count
       value: 20
       objectReference: {fileID: 0}

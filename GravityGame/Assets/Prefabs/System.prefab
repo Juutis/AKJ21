@@ -301,8 +301,13 @@ MonoBehaviour:
         Prefab: {fileID: 2969813555231660389, guid: 31881417978c0a347914ced6c385e833, type: 3}
       - Count: 10
         Prefab: {fileID: 313630681498875951, guid: ab9613d02ded72d47bed10f350cc10ec, type: 3}
-      - Count: 10
+      - Count: 50
         Prefab: {fileID: 1646610465568782720, guid: 9432168b212da044dae6a7d289d76dca, type: 3}
+    - MinRadius: 495
+      MaxRadius: 495
+      Spawns:
+      - Count: 1
+        Prefab: {fileID: 5123558948989654555, guid: 021bdefa24203f34ba7cd4b9a65a0914, type: 3}
     Origin: {fileID: 0}
 --- !u!1 &6255951769001986615
 GameObject:
