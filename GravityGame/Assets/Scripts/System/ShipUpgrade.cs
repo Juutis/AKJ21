@@ -10,6 +10,8 @@ public class ShipUpgrade : MonoBehaviour
     public ShipUpgradeType UpgradeType { get { return config.UpgradeType; } }
     public int UpgradeTier { get { return config.UpgradeTier; } }
 
+    public int IntValue {get {return config.IntValue;}}
+
     public void Initialize(ShipUpgradeConfigScriptableObject upgradeConfig)
     {
         config = upgradeConfig;
@@ -21,14 +23,15 @@ public class ShipUpgrade : MonoBehaviour
             Debug.Log("ALREADY APPLIED: " + config.Name);
             return;
         }
-        Debug.Log("Applying ShipUpgrade: {config.UpgradeType} - {config.UpgradeTier}");
+        Debug.Log($"Applying ShipUpgrade: {config.UpgradeType} - {config.UpgradeTier}");
         if (config.TypeConfig.UpgradeType == ShipUpgradeType.Cannon) {
             // implement cannon upgrade
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Storage) {
             // add any visual changes here
-            // actual Storage is implemented in Inventory.cs using ShipUpgradeManager
+            Shop.main.UpdateShipStorage();
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Shield) {
             // implement shield upgrade
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipHealth>().UpdateShield();
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Laser) {
             // implement laser upgrade
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Engine) {
