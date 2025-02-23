@@ -120,6 +120,12 @@ public class UIShop : MonoBehaviour
             shopItem.Initialize(item);
             shopItems.Add(shopItem);
         }
+        List<UIShopItem> itemsCopy = new (shopItems);
+        foreach(UIShopItem uiShopItem in itemsCopy) {
+            if (uiShopItem.ShopItem.IsBought) {
+                MarkShopItemAsBought(uiShopItem.ShopItem);
+            }
+        }
     }
     public void MarkShopItemAsBought(ShopItem shopItem) {
         var item = shopItems.FirstOrDefault(i => i.ShopItem == shopItem);
@@ -130,6 +136,9 @@ public class UIShop : MonoBehaviour
                 var uiShopItem = Instantiate(uiShopItemPrefab, item.transform.parent);
                 uiShopItem.Initialize(child);
                 shopItems.Add(uiShopItem);
+                if (child.IsBought) {
+                    MarkShopItemAsBought(child);
+                }
             }
         }
     }

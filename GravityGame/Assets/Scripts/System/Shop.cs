@@ -2,13 +2,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Shop: MonoBehaviour {
     public static Shop main;
 
     void Awake()
     {
-        main = this;
+        if (main == null)
+        {
+            main = this;
+            foreach (var upgrade in upgrades)
+            {
+                ShopItem shopItem = Instantiate(shopItemPrefab, elementContainer);
+                shopItem.Initialize(upgrade);
+                shopItems.Add(shopItem);
+            }
+        }
     }
 
     [SerializeField]
@@ -23,9 +33,6 @@ public class Shop: MonoBehaviour {
 
 
     [SerializeField]
-    private Transform homeBase;
-
-    [SerializeField]
     private float distanceFromShopToEnter = 20f;
 
 
@@ -36,18 +43,48 @@ public class Shop: MonoBehaviour {
     private List<ShopItem> shopItems = new();
 
     private void Start() {
-        foreach (var upgrade in upgrades) {
-            ShopItem shopItem = Instantiate(shopItemPrefab, elementContainer);
-            shopItem.Initialize(upgrade);
-            shopItems.Add(shopItem);
+        if (main != this) {
+            return;
+        }
+        Debug.Log("i am this");
+
+#if UNITY_EDITOR
+        //AddResourceToShip(ResourceType.Crystal, 2);
+        baseInventory.AddResource(ResourceManager.main.GetResource(ResourceType.Crystal), 24);
+        baseInventory.AddResource(ResourceManager.main.GetResource(ResourceType.Titanium), 24);
+        baseInventory.AddResource(ResourceManager.main.GetResource(ResourceType.Hydrogen), 20);
+        //AddResourceToShip(ResourceType.Hydrogen, 10);
+#endif
+    }
+
+    void OnEnable()
+    {
+        if (main != this)
+        {
+            return;
+        }
+        Debug.Log("OnEnable called from shop");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (main != this)
+        {
+            return;
         }
         UIManager.main.InitializeShop(shopItems);
         UIManager.main.InitializeBaseInventory(baseInventory);
         UIManager.main.InitializeShipInventory(shipInventory);
+        Debug.Log("UI initialized from shop");
     }
 
     public bool CanBuy(ShopItem shopItem) {
         return shopItem.Cost.CanBuy(baseInventory);
+    }
+
+    private Transform GetBase() {
+        var homeBase = GameObject.FindGameObjectWithTag("base");
+        return homeBase.transform;
     }
 
     public bool Buy(ShopItem shopItem) {
@@ -97,14 +134,14 @@ public class Shop: MonoBehaviour {
 
 
     public bool IsInRangeOfShop() {
-        if  (homeBase == null) {
+        if  (GetBase() == null) {
             return false;
         }
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) {
             return false;
         }
-        return Vector3.Distance(homeBase.position, player.transform.position) <= distanceFromShopToEnter;
+        return Vector3.Distance(GetBase().position, player.transform.position) <= distanceFromShopToEnter;
     }
 
     void Update()

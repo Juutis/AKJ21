@@ -22,17 +22,31 @@ public class UIStartGame : MonoBehaviour
     private Vector2 scrollTarget;
     private Vector2 originalScroll;
     private bool isStarted = false;
+
     void Start()
     {
         originalScroll = scrollRt.anchoredPosition;
 
+#if UNITY_EDITOR
+        MusicPlayer.main.PlayMusic(MusicType.Game);
+        Time.timeScale = 1f;
+        container.SetActive(false);
+#else
+if ( SceneManager.GetActiveScene().name == "Level1") {
         MusicPlayer.main.PlayMusic(MusicType.MainMenu);
         Time.timeScale = 0f;
         container.SetActive(true);
-
+        Cursor.lockState = CursorLockMode.None;
+} else {
+        MusicPlayer.main.PlayMusic(MusicType.Game);
+        Time.timeScale = 1f;
+        container.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+}
+#endif
         button.SetActive(false);
         LevelGenerator.main.NextLevel();
-        Cursor.lockState = CursorLockMode.None;
+
     }
 
     public void StartGame() {

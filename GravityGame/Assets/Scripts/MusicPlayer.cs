@@ -7,7 +7,9 @@ public class MusicPlayer : MonoBehaviour
     public static MusicPlayer main;
     void Awake()
     {
-        main = this;
+        if (main == null) {
+            main = this;
+        }
     }
 
     [SerializeField]

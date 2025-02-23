@@ -12,6 +12,8 @@ public class ShipUpgrade : MonoBehaviour
 
     public int IntValue {get {return config.IntValue;}}
 
+    public ShipUpgradeConfigScriptableObject Config {get {return config;}}
+
     public void Initialize(ShipUpgradeConfigScriptableObject upgradeConfig)
     {
         config = upgradeConfig;

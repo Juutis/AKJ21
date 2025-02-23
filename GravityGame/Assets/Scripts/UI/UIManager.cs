@@ -31,7 +31,10 @@ public class UIManager: MonoBehaviour {
 
     void Awake()
     {
-        main = this;
+        if (main == null)
+        {
+            main = this;
+        }
     } 
 
     void Start() {

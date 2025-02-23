@@ -17,7 +17,10 @@ public class ResourceManager : MonoBehaviour
 
     private void Awake()
     {
-        main = this;
+        if (main == null)
+        {
+            main = this;
+        }
         CreateResources();
     }
 

@@ -7,7 +7,10 @@ public class LevelGenerator : MonoBehaviour
     public static LevelGenerator main;
     void Awake()
     {
-        main = this;
+        if (main == null)
+        {
+            main = this;
+        }
     }
 
     private int currentLevel = -1;

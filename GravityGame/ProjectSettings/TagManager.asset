@@ -8,6 +8,8 @@ TagManager:
   - portalfield
   - gobbo
   - base
+  - portal
+  - GameSystem
   layers:
   - Default
   - TransparentFX
