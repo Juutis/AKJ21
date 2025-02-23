@@ -23,10 +23,11 @@ public class ShipHarvester : MonoBehaviour
             if (obj.TryGetComponent(out PickupResource p))
             {
                 ResourceType type = p.ResourceType;
-                Debug.Log($"Picked up {type}");
-                Shop.main.AddResourceToShip(type, 1);
+                //Debug.Log($"Picked up {type}");
+                if (Shop.main.AddResourceToShip(type, 1)) {
+                    Destroy(hit.transform.gameObject);
+                };
             }
-            Destroy(hit.transform.gameObject);
         }
     }
 }

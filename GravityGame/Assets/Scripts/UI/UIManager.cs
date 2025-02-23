@@ -14,6 +14,22 @@ public class UIManager: MonoBehaviour {
 
     [SerializeField]
     private UICurtainTransition uiCurtainTransition;
+    [SerializeField]
+    private GameObject shopIndicator;
+    [SerializeField]
+    private GameObject storageFullIndicator;
+
+    [SerializeField]
+    private UIMessage uiMessagePrefab;
+
+    [SerializeField]
+    private Transform uiMessageContainer;
+    [SerializeField]
+    private UIEndGame uiTheEnd;
+
+    private bool storageFullMessage = false;
+
+    public bool InvertY = false;
 
     void Awake()
     {
@@ -24,6 +40,53 @@ public class UIManager: MonoBehaviour {
         Cursor.visible = false;
     }
 
+    void Update()
+    {
+        #if UNITY_EDITOR
+        // test endgame
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            TheEnd();
+        }
+        #endif
+        ProcessMessageBuffer();
+        if (uiShop.IsShown && Input.GetKeyDown(KeyCode.B))
+        {
+            HideShop();
+        }
+        else if (Shop.main.IsInRangeOfShop()) {
+            shopIndicator.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                if (!uiShop.IsShown) {
+                    ShowShop();
+                }
+            }
+        } else {
+            shopIndicator.SetActive(false);
+        }
+
+    }
+
+    public void TheEnd() {
+        uiTheEnd.Show();
+    }
+
+    public void ShowCurtains(UnityAction showCallback) {
+        uiCurtainTransition.Show(delegate
+        {
+            showCallback?.Invoke();
+        }
+        );
+    }
+
+    public void HideCurtains(UnityAction hideCallback)
+    {
+        uiCurtainTransition.Hide(delegate
+        {
+            hideCallback?.Invoke();
+        }
+        );
+    }
     public void CurtainTransition(UnityAction showCallback, UnityAction hideCallback) {
         uiCurtainTransition.Show(delegate {
             showCallback?.Invoke();
@@ -39,6 +102,7 @@ public class UIManager: MonoBehaviour {
         }
         CurtainTransition(
             delegate{
+                Time.timeScale = 0f;
                 uiShop.Show();
             },
             delegate{
@@ -55,6 +119,7 @@ public class UIManager: MonoBehaviour {
             },
             delegate
             {
+                Time.timeScale = 1f;
                 Cursor.lockState = CursorLockMode.Locked;
             }
         );
@@ -73,9 +138,44 @@ public class UIManager: MonoBehaviour {
         uiShop.Initialize(items);
     }
 
+
+    public void HideStorageIsFull() {
+        storageFullIndicator.SetActive(false);
+    }
+    public void ShowStorageIsFull() {
+        storageFullIndicator.SetActive(true);
+    }
+
+
+    private float messageInterval = 0.5f;
+    private float mostRecentMessageTime;
+    private List<string> messages = new();
     public void ShowMessage(string message)
     {
-        Debug.Log(message);
+        messages.Add(message);
+    }
+
+    private void ProcessMessageBuffer()
+    {
+        if (messages.Count == 0)
+        {
+            return;
+        }
+        if (messageInterval > (Time.unscaledTime - mostRecentMessageTime))
+        {
+            return;
+        }
+        mostRecentMessageTime = Time.unscaledTime;
+        var message = messages[0];
+        messages.RemoveAt(0);
+        DisplayMessage(message);
+    }
+
+
+    private void DisplayMessage(string message)
+    {
+        UIMessage uiMessage = Instantiate(uiMessagePrefab, uiMessageContainer);
+        uiMessage.Initialize(message);
     }
 
     public void AddResourceToBaseInventory(InventoryResource resource) {

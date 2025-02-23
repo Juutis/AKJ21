@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1362857436070135311, guid: 16e68a82d0607804380459e2951d582e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362857436070135311, guid: 16e68a82d0607804380459e2951d582e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.029988142
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362857436070135311, guid: 16e68a82d0607804380459e2951d582e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1822014605189771208, guid: 16e68a82d0607804380459e2951d582e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

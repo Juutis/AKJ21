@@ -28,22 +28,29 @@ public class Inventory: MonoBehaviour {
     }
 
     public bool AddResource(Resource resource, int amount) {
-        UIManager.main.ShowMessage($"Adding resource: {resource.Name} amount: {amount}");
+        //UIManager.main.ShowMessage($"Adding resource: {resource.Name} amount: {amount}");
         if (IsShipInventory) {
             return AddResourceToShipStorage(resource, amount);
         } else {
             var newResource = AddResourceToStorage(resource, amount);
-            Debug.Log("NewResource should not be null... " + newResource.Name);
+            //Debug.Log("NewResource should not be null... " + newResource.Name);
             UIManager.main.AddResourceToBaseInventory(newResource);
             return true;
         }
     }
 
+
+    void Update()
+    {
+
+    }
+
     private bool AddResourceToShipStorage(Resource resource, int amount) {
         if (CurrentWeight + resource.Weight * amount > GetMaxStorage()) {
-            UIManager.main.ShowMessage("Not enough space in storage");
+            UIManager.main.ShowStorageIsFull();
             return false;
         }
+        UIManager.main.ShowMessage($"Picked up {amount} {resource.Name}");
 
         var newResource = AddResourceToStorage(resource, amount);
         UIManager.main.AddResourceToShipInventory(newResource);

@@ -9819,6 +9819,8 @@ MonoBehaviour:
   shieldRechargeAmount: 1
   shieldRechargeCD: 10
   hitCD: 1
+  shipMesh: {fileID: 7801261155927566368}
+  explosionPrefab: {fileID: 4682040536286819401, guid: 52d41c82c868b3443ae13587827fd1c6, type: 3}
 --- !u!114 &4361899359483589953
 MonoBehaviour:
   m_ObjectHideFlags: 0

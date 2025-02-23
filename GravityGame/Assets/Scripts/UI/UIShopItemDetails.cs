@@ -34,4 +34,10 @@ public class UIShopItemDetails : MonoBehaviour
             costs.Add(uiCost);
         }
     }
+
+    public void Bought() {
+        costs.ForEach(cost => Destroy(cost.gameObject));
+        costs.Clear();
+        txtDescription.text += "\n * PURCHASED * ";
+    }
 }

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class Shop: MonoBehaviour {
     public static Shop main;
@@ -19,18 +21,19 @@ public class Shop: MonoBehaviour {
     [SerializeField]
     private ShopItem shopItemPrefab;
 
+
+    [SerializeField]
+    private Transform homeBase;
+
+    [SerializeField]
+    private float distanceFromShopToEnter = 20f;
+
+
     [SerializeField]
     private Transform elementContainer;
     [SerializeField]
     private List<ShipUpgradeConfigScriptableObject> upgrades = new();
     private List<ShopItem> shopItems = new();
-
-    
-
-    public void EnterShop() {
-        Time.timeScale = 0;
-        UIManager.main.ShowShop();
-    }
 
     private void Start() {
         foreach (var upgrade in upgrades) {
@@ -41,6 +44,10 @@ public class Shop: MonoBehaviour {
         UIManager.main.InitializeShop(shopItems);
         UIManager.main.InitializeBaseInventory(baseInventory);
         UIManager.main.InitializeShipInventory(shipInventory);
+    }
+
+    public bool CanBuy(ShopItem shopItem) {
+        return shopItem.Cost.CanBuy(baseInventory);
     }
 
     public bool Buy(ShopItem shopItem) {
@@ -63,31 +70,45 @@ public class Shop: MonoBehaviour {
         return false;
     }
 
-    public void AddResourceToShip(ResourceType resourceType, int amount) {
-        shipInventory.AddResource(ResourceManager.main.GetResource(resourceType), amount);
+    public bool AddResourceToShip(ResourceType resourceType, int amount) {
+        return shipInventory.AddResource(ResourceManager.main.GetResource(resourceType), amount);
     }
 
 
     public void TransferShipResourcesToBase() {
+        List<string> addedResources = new();
         foreach (var resource in shipInventory.GetAll()) {
             baseInventory.AddResource(resource.Resource, resource.Amount);
+            if (resource.Amount > 0) {
+                addedResources.Add($"{resource.Amount} {resource.Name}");
+            }
             shipInventory.Consume(resource.Resource.ResourceType, resource.Amount);
         }
+        if (addedResources.Count > 0) {
+
+            UIManager.main.ShowMessage($"Ship to Base: {string.Join(" | ", addedResources)}");
+        } else {
+            UIManager.main.ShowMessage("Ship had no resources to transfer to base");
+        }
+        UIManager.main.HideStorageIsFull();
     }
 
-    public void BuyTest() {
-        var shopItem = shopItems[0];
-        if (Buy(shopItem)) {
-            UIManager.main.ShowMessage("Bought " + shopItem.Name);
-        } else {
-            UIManager.main.ShowMessage("Can't afford " + shopItem.Name);
+
+    public bool IsInRangeOfShop() {
+        if  (homeBase == null) {
+            return false;
         }
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) {
+            return false;
+        }
+        return Vector3.Distance(homeBase.position, player.transform.position) <= distanceFromShopToEnter;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B)) {
-            EnterShop();
+        if (!IsInRangeOfShop()) {
+            return;
         }
     }
 }

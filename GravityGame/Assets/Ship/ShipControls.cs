@@ -39,6 +39,8 @@ public class ShipControls : MonoBehaviour
     private ParticleSystem laserParticles;
     private Laser laser;
 
+    public bool isDead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,7 +55,7 @@ public class ShipControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.Space) && !isDead) {
             if (!laserParticles.isPlaying) {
                 laserParticles.Play();
                 laser.Activate();
@@ -70,8 +72,14 @@ public class ShipControls : MonoBehaviour
         var x = Input.GetAxisRaw("Mouse X");
         var y = Input.GetAxisRaw("Mouse Y");
         var z = Input.GetAxis("Horizontal");
-        //if(!WorldManager.main.invertControls) y = -y;
+        //if(UIManager.main.InvertY) y = -y;
         
+        if (isDead) {
+            x = 0;
+            y = 0;
+            z = 0;
+        }
+
         xInput += x;
         yInput += y;
 
@@ -95,14 +103,14 @@ public class ShipControls : MonoBehaviour
         
         //xInput = Mathf.MoveTowards(xInput, 0.0f, 40f * Time.deltaTime);
         //yInput = Mathf.MoveTowards(yInput, 0.0f, 20f * Time.deltaTime);
-        xInput = xInput * Mathf.Pow(0.9f, Time.deltaTime*30);
-        yInput = yInput * Mathf.Pow(0.9f, Time.deltaTime*30);
+        xInput = xInput * Mathf.Pow(0.95f, Time.deltaTime*30);
+        yInput = yInput * Mathf.Pow(0.95f, Time.deltaTime*30);
     }
 
     void FixedUpdate()
     {
         var targetSpeed = shipMesh.transform.forward * speed;
-        rb.linearVelocity = Vector3.RotateTowards(rb.linearVelocity, targetSpeed, 2.0f * Time.deltaTime, 2.0f * Time.deltaTime);
+        rb.linearVelocity = Vector3.MoveTowards(rb.linearVelocity, targetSpeed, 10.0f * Time.deltaTime);
 
         var worldOrigin = WorldOrigin.OfActiveWorld;
         var diff = worldOrigin.transform.position - transform.position;

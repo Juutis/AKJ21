@@ -31,8 +31,15 @@ public class UIShop : MonoBehaviour
 
     private ShopItem selectedShopItem;
 
-[SerializeField]
+    [SerializeField]
     private UIButton buyButton;
+
+    private List<List<ShopItem>> itemGroups = new();
+
+    private UIShopItemDetails shopItemDetails;
+
+    [SerializeField]
+    private Transform containerPrefab;
 
     void Start()
     {
@@ -44,9 +51,15 @@ public class UIShop : MonoBehaviour
 
     public void Show()
     {
+        if (shopItemDetails != null)
+        {
+            Destroy(shopItemDetails.gameObject);
+        }
         IsShown = true;
+        Shop.main.TransferShipResourcesToBase();
         animator.Play("shopShow");
         imgCursor.enabled = true;
+        buyButton.gameObject.SetActive(false);
         container.gameObject.SetActive(true);
     }
 
@@ -64,9 +77,13 @@ public class UIShop : MonoBehaviour
     public void Initialize(List<ShopItem> items)
     {
         buyButton.gameObject.SetActive(false);
-        foreach (var item in items)
+        itemGroups = items.GroupBy(i => i.UpgradeType).Select(g => g.ToList()).ToList();
+
+        foreach (var itemGroup in itemGroups)
         {
-            var shopItem = Instantiate(uiShopItemPrefab, elementContainer);
+            var item = itemGroup.OrderBy(i => i.UpgradeTier).First();
+            var itemContainer = Instantiate(containerPrefab, elementContainer);
+            var shopItem = Instantiate(uiShopItemPrefab, itemContainer);
             shopItem.Initialize(item);
             shopItems.Add(shopItem);
         }
@@ -75,6 +92,12 @@ public class UIShop : MonoBehaviour
         var item = shopItems.FirstOrDefault(i => i.ShopItem == shopItem);
         if (item != null) {
             item.MarkAsBought();
+            var child = itemGroups.FirstOrDefault(g => g.Contains(shopItem)).FirstOrDefault(i => i.UpgradeTier == shopItem.UpgradeTier + 1);
+            if (child != null) {
+                var uiShopItem = Instantiate(uiShopItemPrefab, item.transform.parent);
+                uiShopItem.Initialize(child);
+                shopItems.Add(uiShopItem);
+            }
         }
     }
 
@@ -83,16 +106,25 @@ public class UIShop : MonoBehaviour
             return;
         }
         if (Shop.main.Buy(selectedShopItem)) {
-            Debug.Log("Wow!");
+            UIManager.main.ShowMessage($"Bought {selectedShopItem.Name}!");
+            shopItemDetails.Bought();
+            buyButton.gameObject.SetActive(false);
+        } else {
+            UIManager.main.ShowMessage($"Can't afford it!");
         }
     }
 
     public void ShowItem(ShopItem shopItem) {
         buyButton.gameObject.SetActive(true);
-        foreach (Transform child in shopItemDetailsContainer) {
-            Destroy(child.gameObject);
+        if (shopItemDetails != null) {
+            Destroy(shopItemDetails.gameObject);
         }
-        UIShopItemDetails shopItemDetails = Instantiate(uiShopItemDetailsPrefab, shopItemDetailsContainer);
+        if(Shop.main.CanBuy(shopItem)) {
+            buyButton.CanBuy(true);
+        } else {
+            buyButton.CanBuy(false);
+        }
+        shopItemDetails = Instantiate(uiShopItemDetailsPrefab, shopItemDetailsContainer);
         shopItemDetails.Initialize(shopItem);
         selectedShopItem = shopItem;
     }

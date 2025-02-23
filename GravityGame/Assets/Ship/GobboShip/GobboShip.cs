@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GobboShip : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class GobboShip : MonoBehaviour
 
     private GameObject player;
 
-    private float maxShootDistance = 100.0f;
+    private float maxShootDistance = 80.0f;
     private float maxShootAngle = 30.0f;
     private float rotateSpeed = 90.0f;
 
@@ -38,10 +39,13 @@ public class GobboShip : MonoBehaviour
     [SerializeField]
     private GameObject dieExplosionPrefab;
 
+    private ShipControls shipControls;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        shipControls = player.GetComponent<ShipControls>();
         alignTransform = player.transform.Find("Ship");
         rb = GetComponent<Rigidbody>();
         currentHP = maxHP;
@@ -74,6 +78,9 @@ public class GobboShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (shipControls.isDead) {
+            return;
+        }
         rotateTowardsPlayer();
         handleShooting();
     }
@@ -84,7 +91,21 @@ public class GobboShip : MonoBehaviour
         var distance = gobboToPlayer.magnitude;
         var t = distance / 20.0f;
         var ms = Mathf.Lerp(-moveSpeed, moveSpeed, t);
+        
+        if (distance > 100.0f || shipControls.isDead) {
+            ms = 0;
+        }
+
         rb.linearVelocity = gobboToPlayer.normalized * ms;
+
+        var worldOrigin = WorldOrigin.OfActiveWorld;
+        var diff = worldOrigin.transform.position - transform.position;
+        var dist = diff.magnitude;
+        if (dist < 50) {
+            var force = (50.0f - dist) / 50.0f;
+            force = Mathf.Clamp01(force);
+            rb.AddForce(-diff.normalized * force * 100.0f, ForceMode.Acceleration);
+        }
     }
 
     private void rotateTowardsPlayer() {
