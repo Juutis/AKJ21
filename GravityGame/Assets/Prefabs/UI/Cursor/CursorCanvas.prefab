@@ -118,22 +118,6 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1669583776905227044}
-    - target: {fileID: 2689761861086796332, guid: c3790b92f3ade2740a37bbb2c0189e5c, type: 3}
-      propertyPath: targetCursorConfig.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2689761861086796332, guid: c3790b92f3ade2740a37bbb2c0189e5c, type: 3}
-      propertyPath: targetCursorConfig.Array.data[2].tag
-      value: portal
-      objectReference: {fileID: 0}
-    - target: {fileID: 2689761861086796332, guid: c3790b92f3ade2740a37bbb2c0189e5c, type: 3}
-      propertyPath: targetCursorConfig.Array.data[2].cursorPrefab
-      value: 
-      objectReference: {fileID: 3275425454232402605, guid: db35d5e0c73426d4892fbcbca0d4cdbe, type: 3}
-    - target: {fileID: 2689761861086796332, guid: c3790b92f3ade2740a37bbb2c0189e5c, type: 3}
-      propertyPath: targetCursorConfig.Array.data[0].trackMinRange
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 2974477477992743715, guid: c3790b92f3ade2740a37bbb2c0189e5c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

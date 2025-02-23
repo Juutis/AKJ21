@@ -134,12 +134,21 @@ MonoBehaviour:
     trackAll: 1
     trackInRange: 0
     trackRange: 0
+    trackMinRange: 50
     disabled: 0
   - tag: base
     cursorPrefab: {fileID: 3275425454232402605, guid: db35d5e0c73426d4892fbcbca0d4cdbe, type: 3}
     trackAll: 0
     trackInRange: 0
     trackRange: 0
+    trackMinRange: 0
+    disabled: 0
+  - tag: portal
+    cursorPrefab: {fileID: 3275425454232402605, guid: a227d726b9ad331418023045d9bcec79, type: 3}
+    trackAll: 0
+    trackInRange: 0
+    trackRange: 0
+    trackMinRange: 50
     disabled: 0
   canvas: {fileID: 0}
   borderPad: 300
