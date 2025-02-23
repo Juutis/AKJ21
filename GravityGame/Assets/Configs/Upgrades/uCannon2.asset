@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: uCannon2
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: 8f86def6e09c32540b3dd2ecd43aa3d5, type: 2}
-  Name: Cannon III
+  Name: Cannon Mk. II
   Description: More blasters! More destruction!
   UpgradeTier: 2
   IntValue: 2

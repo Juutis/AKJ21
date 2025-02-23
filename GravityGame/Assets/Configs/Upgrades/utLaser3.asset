@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: utLaser3
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: 8f400b1405c2a6c48b2752080fdb0e46, type: 2}
-  Name: Laser II
+  Name: Laser Mk. III
   Description: Fully equipped laser to cut through even the densest materials.
   UpgradeTier: 1
   IntValue: 3

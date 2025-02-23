@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: uCannon1
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: 8f86def6e09c32540b3dd2ecd43aa3d5, type: 2}
-  Name: PlasmaCannon Mk. II
+  Name: Cannon Mk. I
   Description: PlasmaCannon Mk. II is the latest and shiniest from WepTec Industries.
     With its dual-pulse plasma impact cannons it should provide you ample defense
     against any foe you may face.

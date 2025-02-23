@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: utEngine1
   m_EditorClassIdentifier: 
   TypeConfig: {fileID: 11400000, guid: b1cf9b58aa26a3347a8a30c9695542df, type: 2}
-  Name: Engine II
+  Name: Rocket Boosters
   Description: Reworked engine to better suit your agile spacecraft.
   UpgradeTier: 1
   IntValue: 1
