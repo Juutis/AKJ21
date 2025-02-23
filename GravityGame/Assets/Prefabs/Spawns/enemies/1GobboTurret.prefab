@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8174142317574410896
+--- !u!1 &5265469865791589549
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,106 +8,102 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3524112814735678914}
-  - component: {fileID: 3250550704854799350}
+  - component: {fileID: 3962418566193694660}
+  - component: {fileID: 1783933020932292605}
   m_Layer: 0
-  m_Name: ShipSpawner
+  m_Name: 1GobboTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3524112814735678914
+--- !u!4 &3962418566193694660
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8174142317574410896}
+  m_GameObject: {fileID: 5265469865791589549}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4521657274263638626}
+  - {fileID: 2311247780178805268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3250550704854799350
+--- !u!114 &1783933020932292605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8174142317574410896}
+  m_GameObject: {fileID: 5265469865791589549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a3faf71ac691ed4fba8d3789cca0860, type: 3}
+  m_Script: {fileID: 11500000, guid: e186c17e36f05d744973fba7ff2a8ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &2225773946107137864
+--- !u!1001 &7857312562547383373
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3524112814735678914}
+    m_TransformParent: {fileID: 3962418566193694660}
     m_Modifications:
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4107974036550228616, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
+    - target: {fileID: 7191011184759319276, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
       propertyPath: m_Name
-      value: GobboShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 4107974036550228616, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: Turret
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
---- !u!4 &4521657274263638626 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
+--- !u!4 &2311247780178805268 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2315886811920112938, guid: 0b90cb6129ae48d45a16199a1cfe6a8c, type: 3}
-  m_PrefabInstance: {fileID: 2225773946107137864}
+  m_CorrespondingSourceObject: {fileID: 5555748387840466521, guid: 30cbcc3ff87356842b601412980bcf03, type: 3}
+  m_PrefabInstance: {fileID: 7857312562547383373}
   m_PrefabAsset: {fileID: 0}

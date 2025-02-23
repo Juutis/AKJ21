@@ -260,16 +260,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldContainer: {fileID: 6827621690798467132}
   levels:
-  - spawnSpots:
-    - {fileID: 3695307144827406560, guid: e3466d3d069b4d9419434d87659e045c, type: 3}
-    - {fileID: 2130625864725018193, guid: 2a54d5ee38f04d0448f06e7123008d46, type: 3}
-    - {fileID: 9137934155906217013, guid: 8cac5c8d17edde64699fe99532d7a9e4, type: 3}
-    - {fileID: 5389245715528198041, guid: 44cfe8dc7b52d3b46a94e3e077a6875a, type: 3}
-    spawns:
-    - {fileID: 6116092715807496013, guid: 6b9dc4919cbdbd04eae521c0c061afbe, type: 3}
-    - {fileID: 6272246388864631682, guid: f110f3f4ac24be841927ade090257a16, type: 3}
-    - {fileID: 9169519254076693938, guid: 4a1a62d9f828afd45aacf9af6e5d7f25, type: 3}
-    - {fileID: 9169519254076693938, guid: 4a1a62d9f828afd45aacf9af6e5d7f25, type: 3}
+  - Layers:
+    - MinRadius: 20
+      MaxRadius: 125
+      Spawns:
+      - Count: 5
+        Prefab: {fileID: 9169519254076693938, guid: 4a1a62d9f828afd45aacf9af6e5d7f25, type: 3}
+      - Count: 5
+        Prefab: {fileID: 6272246388864631682, guid: f110f3f4ac24be841927ade090257a16, type: 3}
+    - MinRadius: 75
+      MaxRadius: 125
+      Spawns:
+      - Count: 2
+        Prefab: {fileID: 1646610465568782720, guid: 4ef7866229356dc4f9f7c97b9811717e, type: 3}
+      - Count: 5
+        Prefab: {fileID: 5265469865791589549, guid: 71bf878f9b8d182498c6b4a0830e59a3, type: 3}
+    - MinRadius: 125
+      MaxRadius: 250
+      Spawns:
+      - Count: 20
+        Prefab: {fileID: 6116092715807496013, guid: 184f582bc8ab1784696da412da957b3d, type: 3}
+      - Count: 20
+        Prefab: {fileID: 9169519254076693938, guid: e18f1439d6d1e1c439c9dec0698165c0, type: 3}
+      - Count: 20
+        Prefab: {fileID: 6272246388864631682, guid: 690de865cb22e884288352185ab1ec3d, type: 3}
+    - MinRadius: 250
+      MaxRadius: 450
+      Spawns:
+      - Count: 100
+        Prefab: {fileID: 6116092715807496013, guid: 184f582bc8ab1784696da412da957b3d, type: 3}
+      - Count: 20
+        Prefab: {fileID: 9169519254076693938, guid: e18f1439d6d1e1c439c9dec0698165c0, type: 3}
+      - Count: 20
+        Prefab: {fileID: 6272246388864631682, guid: 690de865cb22e884288352185ab1ec3d, type: 3}
+      - Count: 10
+        Prefab: {fileID: 6272246388864631682, guid: f110f3f4ac24be841927ade090257a16, type: 3}
+      - Count: 10
+        Prefab: {fileID: 9169519254076693938, guid: 4a1a62d9f828afd45aacf9af6e5d7f25, type: 3}
+      - Count: 5
+        Prefab: {fileID: 2969813555231660389, guid: 31881417978c0a347914ced6c385e833, type: 3}
+      - Count: 10
+        Prefab: {fileID: 313630681498875951, guid: ab9613d02ded72d47bed10f350cc10ec, type: 3}
+      - Count: 10
+        Prefab: {fileID: 1646610465568782720, guid: 9432168b212da044dae6a7d289d76dca, type: 3}
+    Origin: {fileID: 0}
 --- !u!1 &6255951769001986615
 GameObject:
   m_ObjectHideFlags: 0

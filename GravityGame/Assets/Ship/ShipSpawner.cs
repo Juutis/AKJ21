@@ -20,6 +20,7 @@ public class ShipSpawner : MonoBehaviour
         started = true;
         spawned = Time.time;
         shipAi.gameObject.SetActive(true);
+        shipAi.GetComponent<Collider>().enabled = false;
         Update();
     }
 
@@ -45,5 +46,6 @@ public class ShipSpawner : MonoBehaviour
         Destroy(gameObject);
         shipAi.enabled = true;
         shipAi.transform.parent = null;
+        shipAi.GetComponent<Collider>().enabled = true;
     }
 }

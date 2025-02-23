@@ -18,7 +18,6 @@ public class UIInventory : MonoBehaviour
     public void Initialize(Inventory inventory, bool IsShipInventory)
     {
         isShipInventory = IsShipInventory;
-        items.Clear();
         if (IsShipInventory) {
             storageIndicator.Initialize(inventory);
         }
@@ -55,8 +54,10 @@ public class UIInventory : MonoBehaviour
     }
 
     public void UpdateResourceView(InventoryResource resource) {
+        Debug.Log($"Inventory: {resource.Name} now {resource.Amount}");
         var item = GetItem(resource);
         if (item == null) {
+
             return;
         }
         item.UpdateAmount();

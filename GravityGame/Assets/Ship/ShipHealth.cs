@@ -35,7 +35,6 @@ public class ShipHealth : MonoBehaviour
     {
         currentHP = maxHP;
         rb = GetComponent<Rigidbody>();
-        UpdateShield();
     }
 
     [SerializeField]
@@ -45,7 +44,9 @@ public class ShipHealth : MonoBehaviour
 
     public void UpdateShield() {
         ShipUpgrade upgrade = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Shield);
-        maxHP = upgrade.IntValue;
+        if (upgrade != null) {
+            maxHP = upgrade.IntValue;
+        }
     }
 
     void Update()

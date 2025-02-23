@@ -45,6 +45,9 @@ public class UIShop : MonoBehaviour
     [SerializeField]
     private Transform containerPrefab;
 
+    private bool canClose = false;
+    private bool canShow = true;
+
     void Start()
     {
         if (!IsShown) {
@@ -53,26 +56,42 @@ public class UIShop : MonoBehaviour
         }
     }
 
+    public bool CanClose() {
+        return canClose;
+    }
+    public bool CanShow() {
+        return canShow;
+    }
+
     public void Show()
     {
         if (IsShown) {
             return;
         }
+        canShow = false;
+        canClose = false;
         if (shopItemDetails != null)
         {
             Destroy(shopItemDetails.gameObject);
         }
-        IsShown = true;
         string message = Shop.main.TransferShipResourcesToBase();
         ShopMessage(message);
-        animator.Play("shopShow");
+        //animator.Play("shopShow");
         imgCursor.enabled = true;
         buyButton.gameObject.SetActive(false);
         container.gameObject.SetActive(true);
+        //Debug.Log("Showing");
     }
 
-    public void ShowFinished() {
-        elementContainer.gameObject.SetActive(true);
+    public void FinishShowing() {
+        canClose = true;
+        IsShown = true;
+        //Debug.Log("finished showing");
+    }
+    public void FinishHiding() {
+        IsShown = false;
+        canShow = true;
+        //Debug.Log("finished hiding");
     }
 
     public void ShopMessage(string message) {
@@ -80,10 +99,12 @@ public class UIShop : MonoBehaviour
     }
 
      public void Hide() {
-        animator.Play("shopHide");
+        //animator.Play("shopHide");
+        canShow = false;
+        canClose = false;
         imgCursor.enabled = false;
         container.gameObject.SetActive(false);
-        IsShown = false;
+        //Debug.Log("hiding");
     }
 
     public void Initialize(List<ShopItem> items)

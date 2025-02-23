@@ -14,13 +14,18 @@ public class Bullet : MonoBehaviour
         transform.position = position;
         rb.position = position;
         rb.linearVelocity = velocity;
-        Invoke("Kill", 5.0f);
+        var ttl = 50.0f / velocity.magnitude;
+        Invoke("Remove", ttl);
         layerMask = LayerMask.GetMask("Default", "Destroyable");
     }
 
     public void Kill() {
         poof.Play();
         poof.transform.parent = null;
+        Destroy(gameObject);
+    }
+
+    public void Remove() {
         Destroy(gameObject);
     }
 

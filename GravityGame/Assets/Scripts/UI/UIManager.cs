@@ -27,7 +27,6 @@ public class UIManager: MonoBehaviour {
     [SerializeField]
     private UIEndGame uiTheEnd;
 
-
     public bool InvertY = false;
 
     void Awake()
@@ -37,30 +36,30 @@ public class UIManager: MonoBehaviour {
 
     void Start() {
         Cursor.visible = false;
+/*#if UNITY_EDITOR
+        Shop.main.AddResourceToShip(ResourceType.Hydrogen, 20);
+        #endif*/
     }
 
     void Update()
     {
 #if UNITY_EDITOR
         // test endgame
-        Shop.main.AddResourceToShip(ResourceType.Hydrogen, 20);
         //Shop.main.AddResourceToShip(ResourceType.Titanium, 1);
         if (Input.GetKeyDown(KeyCode.Q)) {
             TheEnd();
         }
-        #endif
+#endif
         ProcessMessageBuffer();
-        if (uiShop.IsShown && Input.GetKeyDown(KeyCode.B))
+        if (uiShop.IsShown && uiShop.CanClose() && Input.GetKeyDown(KeyCode.B))
         {
             HideShop();
         }
-        else if (Shop.main.IsInRangeOfShop()) {
+        if (Shop.main.IsInRangeOfShop()) {
             shopIndicator.SetActive(true);
             if (Input.GetKeyDown(KeyCode.B))
             {
-                if (!uiShop.IsShown) {
-                    ShowShop();
-                }
+                ShowShop();
             }
         } else {
             shopIndicator.SetActive(false);
@@ -98,7 +97,7 @@ public class UIManager: MonoBehaviour {
     }
 
     public void ShowShop() {
-        if (uiShop.IsShown) {
+        if (uiShop.IsShown || !uiShop.CanShow()) {
             return;
         }
         CurtainTransition(
@@ -108,11 +107,15 @@ public class UIManager: MonoBehaviour {
             },
             delegate{
                 Cursor.lockState = CursorLockMode.None;
+                uiShop.FinishShowing();
             }
         );
     }
     public void HideShop()
     {
+        if (!uiShop.IsShown || !uiShop.CanClose()) {
+            return;
+        }
         CurtainTransition(
             delegate
             {
@@ -122,6 +125,7 @@ public class UIManager: MonoBehaviour {
             {
                 Time.timeScale = 1f;
                 Cursor.lockState = CursorLockMode.Locked;
+                uiShop.FinishHiding();
             }
         );
     }
@@ -192,6 +196,7 @@ public class UIManager: MonoBehaviour {
         uiBaseInventory.UpdateResourceView(resource);
     }
     public void UpdateInventoryResourceView(InventoryResource resource) {
+        Debug.Log($"Ship inventory: {resource.Name} now {resource.Amount}");
         uiShipInventory.UpdateResourceView(resource);
     }
 
