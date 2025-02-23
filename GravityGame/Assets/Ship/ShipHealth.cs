@@ -4,8 +4,8 @@ using UnityEngine.InputSystem.HID;
 public class ShipHealth : MonoBehaviour
 {
     [SerializeField]
-    private float maxHP;
-    private float currentHP;
+    private int maxHP;
+    private int currentHP;
 
     [SerializeField]
     private float shieldRechargeAmount;
@@ -27,6 +27,9 @@ public class ShipHealth : MonoBehaviour
 
     [SerializeField]
     private Transform RespawnPoint;
+
+    public int MaxHp {get {return maxHP;}}
+    public int CurrentHp {get {return currentHP;}}
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

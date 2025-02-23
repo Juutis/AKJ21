@@ -52,8 +52,10 @@ public class Inventory: MonoBehaviour {
         }
         UIManager.main.ShowMessage($"Picked up {amount} {resource.Name}");
 
+
         var newResource = AddResourceToStorage(resource, amount);
         UIManager.main.AddResourceToShipInventory(newResource);
+
         return true;
     }
 
