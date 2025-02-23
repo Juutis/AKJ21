@@ -19,18 +19,15 @@ public class Shop: MonoBehaviour {
     [SerializeField]
     private ShopItem shopItemPrefab;
 
+
+    [SerializeField]
+    private Transform homeBase;
+
     [SerializeField]
     private Transform elementContainer;
     [SerializeField]
     private List<ShipUpgradeConfigScriptableObject> upgrades = new();
     private List<ShopItem> shopItems = new();
-
-    
-
-    public void EnterShop() {
-        Time.timeScale = 0;
-        UIManager.main.ShowShop();
-    }
 
     private void Start() {
         foreach (var upgrade in upgrades) {
@@ -41,6 +38,10 @@ public class Shop: MonoBehaviour {
         UIManager.main.InitializeShop(shopItems);
         UIManager.main.InitializeBaseInventory(baseInventory);
         UIManager.main.InitializeShipInventory(shipInventory);
+    }
+
+    public bool CanBuy(ShopItem shopItem) {
+        return shopItem.Cost.CanBuy(baseInventory);
     }
 
     public bool Buy(ShopItem shopItem) {
@@ -63,8 +64,8 @@ public class Shop: MonoBehaviour {
         return false;
     }
 
-    public void AddResourceToShip(ResourceType resourceType, int amount) {
-        shipInventory.AddResource(ResourceManager.main.GetResource(resourceType), amount);
+    public bool AddResourceToShip(ResourceType resourceType, int amount) {
+        return shipInventory.AddResource(ResourceManager.main.GetResource(resourceType), amount);
     }
 
 
@@ -73,21 +74,24 @@ public class Shop: MonoBehaviour {
             baseInventory.AddResource(resource.Resource, resource.Amount);
             shipInventory.Consume(resource.Resource.ResourceType, resource.Amount);
         }
+        UIManager.main.HideStorageIsFull();
     }
 
-    public void BuyTest() {
-        var shopItem = shopItems[0];
-        if (Buy(shopItem)) {
-            UIManager.main.ShowMessage("Bought " + shopItem.Name);
-        } else {
-            UIManager.main.ShowMessage("Can't afford " + shopItem.Name);
+    private float minDistanceFromShop = 30f;
+
+    public bool IsInRangeOfShop() {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) {
+            Debug.Log("Player not found!!");
+            return false;
         }
+        return Vector3.Distance(homeBase.position, player.transform.position) <= minDistanceFromShop;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B)) {
-            EnterShop();
+        if (!IsInRangeOfShop()) {
+            return;
         }
     }
 }
