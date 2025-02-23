@@ -51,10 +51,15 @@ public class UIShop : MonoBehaviour
 
     public void Show()
     {
+        if (shopItemDetails != null)
+        {
+            Destroy(shopItemDetails.gameObject);
+        }
         IsShown = true;
         Shop.main.TransferShipResourcesToBase();
         animator.Play("shopShow");
         imgCursor.enabled = true;
+        buyButton.gameObject.SetActive(false);
         container.gameObject.SetActive(true);
     }
 
