@@ -95,14 +95,14 @@ public class ShipControls : MonoBehaviour
         
         //xInput = Mathf.MoveTowards(xInput, 0.0f, 40f * Time.deltaTime);
         //yInput = Mathf.MoveTowards(yInput, 0.0f, 20f * Time.deltaTime);
-        xInput = xInput * Mathf.Pow(0.9f, Time.deltaTime*30);
-        yInput = yInput * Mathf.Pow(0.9f, Time.deltaTime*30);
+        xInput = xInput * Mathf.Pow(0.95f, Time.deltaTime*30);
+        yInput = yInput * Mathf.Pow(0.95f, Time.deltaTime*30);
     }
 
     void FixedUpdate()
     {
         var targetSpeed = shipMesh.transform.forward * speed;
-        rb.linearVelocity = Vector3.RotateTowards(rb.linearVelocity, targetSpeed, 2.0f * Time.deltaTime, 2.0f * Time.deltaTime);
+        rb.linearVelocity = Vector3.MoveTowards(rb.linearVelocity, targetSpeed, 10.0f * Time.deltaTime);
 
         var worldOrigin = WorldOrigin.OfActiveWorld;
         var diff = worldOrigin.transform.position - transform.position;
