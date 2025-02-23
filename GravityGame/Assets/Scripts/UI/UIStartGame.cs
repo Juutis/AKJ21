@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIStartGame : MonoBehaviour
 {
@@ -27,11 +28,7 @@ public class UIStartGame : MonoBehaviour
     {
         originalScroll = scrollRt.anchoredPosition;
 
-#if UNITY_EDITOR
-        MusicPlayer.main.PlayMusic(MusicType.Game);
-        Time.timeScale = 1f;
-        container.SetActive(false);
-#else
+
 if ( SceneManager.GetActiveScene().name == "Level1") {
         MusicPlayer.main.PlayMusic(MusicType.MainMenu);
         Time.timeScale = 0f;
@@ -43,7 +40,6 @@ if ( SceneManager.GetActiveScene().name == "Level1") {
         container.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
 }
-#endif
         button.SetActive(false);
         LevelGenerator.main.NextLevel();
 
