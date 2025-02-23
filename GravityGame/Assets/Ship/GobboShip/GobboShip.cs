@@ -13,6 +13,11 @@ public class GobboShip : MonoBehaviour
     private int maxHP;
     private int currentHP;
 
+    [SerializeField]
+    private List<DropRate> dropRates = new();
+
+    private List<Rigidbody> drops = new();
+
     private float shootInterval = 0.5f;
     private float shootTimer = 0.0f;
 
@@ -50,6 +55,17 @@ public class GobboShip : MonoBehaviour
 
                     childMesh.materials.ToList().ForEach(x => matColorCache.Add(x, x.color));
                 }
+            }
+        }
+
+        foreach (DropRate dropRate in dropRates)
+        {
+            if (dropRate.Chance > Random.value)
+            {
+                GameObject drop = Instantiate(dropRate.Prefab);
+                drops.Add(drop.GetComponent<Rigidbody>());
+                drop.transform.position = transform.position + Random.onUnitSphere * 0.5f;
+                drop.SetActive(false);
             }
         }
     }
@@ -109,6 +125,14 @@ public class GobboShip : MonoBehaviour
     private void Explode()
     {
         Destroy(gameObject);
+
+        foreach (Rigidbody drop in drops)
+        {
+            Invoke("DisableDropBodies", 1f);
+            drop.gameObject.SetActive(true);
+            drop.transform.position = transform.position + Random.onUnitSphere;
+            drop.linearVelocity = (drop.transform.position - transform.position).normalized * (Random.value * 4f + 3f);
+        }
     }
 
     private void shoot() {

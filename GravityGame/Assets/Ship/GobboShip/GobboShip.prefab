@@ -83,6 +83,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cannon: {fileID: 9173500075902897004}
   maxHP: 5
+  dropRates:
+  - Chance: 1
+    Prefab: {fileID: 8396769526898797003, guid: af6459c01aca5c441979d349517361e0, type: 3}
 --- !u!54 &5073370585480377284
 Rigidbody:
   m_ObjectHideFlags: 0
