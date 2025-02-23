@@ -26,8 +26,5 @@ public class GameSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I)) {
-            SceneManager.LoadScene("Level2");
-        }
     }
 }
