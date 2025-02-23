@@ -9684,6 +9684,7 @@ GameObject:
   - component: {fileID: 8327556824628002565}
   - component: {fileID: 7611528387550928711}
   - component: {fileID: -3051096939492254530}
+  - component: {fileID: 4361899359483589953}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -9723,7 +9724,7 @@ MonoBehaviour:
   shipMesh: {fileID: 7801261155927566368}
   thirdPersonCamera: {fileID: 0}
   booster: {fileID: 326977906629019979}
-  laser: {fileID: 1080453088427529527}
+  laserParticles: {fileID: 1080453088427529527}
 --- !u!54 &8220789087452999210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9818,6 +9819,20 @@ MonoBehaviour:
   shieldRechargeAmount: 1
   shieldRechargeCD: 10
   hitCD: 1
+--- !u!114 &4361899359483589953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690361430817125412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c98be0e4c8d8e47a1a05f0465436d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beamLength: 80
+  laserCD: 1
 --- !u!1 &6339380551495876889
 GameObject:
   m_ObjectHideFlags: 0

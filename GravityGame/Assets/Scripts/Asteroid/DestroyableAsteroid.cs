@@ -19,7 +19,7 @@ public class DestroyableAsteroid : MonoBehaviour
     private List<Material> materials = new();
     private Dictionary<Material, Color> matColorCache = new();
     private float lastHit = 0f;
-    private float hitCD = 2f;
+    private float hitCD = .2f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,7 +58,7 @@ public class DestroyableAsteroid : MonoBehaviour
 
     }
 
-    private void Hit()
+    public void Hit()
     {
         if (Time.time - lastHit < hitCD)
         {
@@ -117,15 +117,6 @@ public class DestroyableAsteroid : MonoBehaviour
         foreach (Rigidbody drop in drops)
         {
             drop.isKinematic = false;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
-        {
-            Hit();
-            Destroy(other.gameObject);
         }
     }
 }
