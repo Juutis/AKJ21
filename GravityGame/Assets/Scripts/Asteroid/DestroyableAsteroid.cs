@@ -40,16 +40,7 @@ public class DestroyableAsteroid : MonoBehaviour
             }
         }
 
-        foreach (DropRate dropRate in dropRates)
-        {
-            if (dropRate.Chance > Random.value)
-            {
-                GameObject drop = Instantiate(dropRate.Prefab);
-                drops.Add(drop.GetComponent<Rigidbody>());
-                drop.transform.position = transform.position + Random.onUnitSphere * 0.5f;
-                drop.SetActive(false);
-            }
-        }
+
     }
 
     // Update is called once per frame
@@ -90,6 +81,17 @@ public class DestroyableAsteroid : MonoBehaviour
             Rigidbody body = piece.AddComponent<Rigidbody>();
             body.useGravity = false;
             body.linearVelocity = (piece.transform.position - transform.position).normalized * (Random.value * 15f + 15f);
+
+            foreach (DropRate dropRate in dropRates)
+            {
+                if (dropRate.Chance > Random.value)
+                {
+                    GameObject drop = Instantiate(dropRate.Prefab);
+                    drops.Add(drop.GetComponent<Rigidbody>());
+                    drop.transform.position = transform.position + Random.onUnitSphere * 0.5f;
+                    drop.SetActive(false);
+                }
+            }
 
             Invoke("Delete", 5f);
         }

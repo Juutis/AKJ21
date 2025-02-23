@@ -36,20 +36,12 @@ public class UIManager: MonoBehaviour {
 
     void Start() {
         Cursor.visible = false;
-/*#if UNITY_EDITOR
-        Shop.main.AddResourceToShip(ResourceType.Hydrogen, 20);
-        #endif*/
+
     }
 
     void Update()
     {
-#if UNITY_EDITOR
-        // test endgame
-        //Shop.main.AddResourceToShip(ResourceType.Titanium, 1);
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            TheEnd();
-        }
-#endif
+
         ProcessMessageBuffer();
         if (uiShop.IsShown && uiShop.CanClose() && Input.GetKeyDown(KeyCode.B))
         {
