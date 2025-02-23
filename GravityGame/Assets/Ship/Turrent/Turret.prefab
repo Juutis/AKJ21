@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5555748387840466521}
   - component: {fileID: 5262560260406539450}
-  m_Layer: 0
+  - component: {fileID: 2649203695079812818}
+  m_Layer: 10
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +51,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532b3f8c3c2e3cb4497ba91aa2d5bb0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 5
+  dropRates:
+  - Chance: 1
+    Prefab: {fileID: 8396769526898797003, guid: af6459c01aca5c441979d349517361e0, type: 3}
+--- !u!136 &2649203695079812818
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191011184759319276}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7151369
+  m_Height: 2.8825595
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.31437647, z: -0.21513689}
 --- !u!1001 &516827396872228496
 PrefabInstance:
   m_ObjectHideFlags: 0
