@@ -6,6 +6,8 @@ TagManager:
   tags:
   - portalshield
   - portalfield
+  - gobbo
+  - base
   layers:
   - Default
   - TransparentFX
