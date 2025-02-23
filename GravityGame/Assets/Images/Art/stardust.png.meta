@@ -140,7 +140,7 @@ TextureImporter:
         width: 401
         height: 846
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,6 +149,28 @@ TextureImporter:
       bones: []
       spriteID: 39ea0bf4ef7958c4db0485ede57bfe88
       internalID: -300744202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stardustAll
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 802
+        height: 846
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f86935a7aabc4244b963ebd63f470ee
+      internalID: 901259979
       vertices: []
       indices: 
       edges: []
@@ -167,6 +189,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      stardustAll: 901259979
       stardustLeft: -1276800327
       stardustRight: -300744202
   mipmapLimitGroupName: 
