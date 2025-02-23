@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
     public void NextLevel() {
         int nextLevel = currentLevel + 1;
         Debug.Log($"Next level: {nextLevel}");
-        if (levels.Count > currentLevel) {
+        if (levels.Count > nextLevel) {
             currentLevel  = nextLevel;
             var level = levels[currentLevel];
             GenerateLevel(level);

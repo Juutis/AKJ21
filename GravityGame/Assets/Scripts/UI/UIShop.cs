@@ -55,6 +55,9 @@ public class UIShop : MonoBehaviour
 
     public void Show()
     {
+        if (IsShown) {
+            return;
+        }
         if (shopItemDetails != null)
         {
             Destroy(shopItemDetails.gameObject);

@@ -11,7 +11,7 @@ public class ShipUpgradeConfigScriptableObject : ScriptableObject
 
     public ShipUpgradeType UpgradeType { get { return TypeConfig.UpgradeType; } }
 
-    [Range(1, 5)]
+    [Range(0, 5)]
     public int UpgradeTier = 1;
 
     public int IntValue;
