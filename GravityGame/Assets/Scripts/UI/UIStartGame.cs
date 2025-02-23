@@ -29,7 +29,7 @@ public class UIStartGame : MonoBehaviour
         originalScroll = scrollRt.anchoredPosition;
 
 
-        Debug.Log("Version Final 1.5");
+        Debug.Log("Version Final 1.5.1");
 
 if ( SceneManager.GetActiveScene().name == "Level1") {
         MusicPlayer.main.PlayMusic(MusicType.MainMenu);
