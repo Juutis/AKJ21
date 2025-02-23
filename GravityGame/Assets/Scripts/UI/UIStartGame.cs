@@ -29,10 +29,12 @@ public class UIStartGame : MonoBehaviour
                 Time.timeScale = 1f;
                 gameObject.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
-        #else
+                MusicPlayer.main.PlayMusic(MusicType.Game);
+#else
+                MusicPlayer.main.PlayMusic(MusicType.MainMenu);
                 Time.timeScale = 0f;
                 container.SetActive(true);
-        #endif
+#endif
         button.SetActive(false);
         LevelGenerator.main.NextLevel();
         Cursor.lockState = CursorLockMode.None;
@@ -55,6 +57,7 @@ public class UIStartGame : MonoBehaviour
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             gameObject.SetActive(false);
+            MusicPlayer.main.PlayMusic(MusicType.Game);
         });
     }
 

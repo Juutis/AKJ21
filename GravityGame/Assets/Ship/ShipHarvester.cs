@@ -25,6 +25,7 @@ public class ShipHarvester : MonoBehaviour
                 ResourceType type = p.ResourceType;
                 //Debug.Log($"Picked up {type}");
                 if (Shop.main.AddResourceToShip(type, 1)) {
+                    SoundManager.main.PlaySound(GameSoundType.Pickup);
                     Destroy(hit.transform.gameObject);
                 };
             }
