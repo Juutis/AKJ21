@@ -63,6 +63,10 @@ public class ShipControls : MonoBehaviour
             laser.Deactivate();
         }
 
+        if (Input.GetKeyDown(KeyCode.R)) {
+            transform.position = Vector3.zero;
+        }
+
         handleZoom();
         handleAcceleration();
 
@@ -70,7 +74,7 @@ public class ShipControls : MonoBehaviour
         var x = Input.GetAxisRaw("Mouse X");
         var y = Input.GetAxisRaw("Mouse Y");
         var z = Input.GetAxis("Horizontal");
-        //if(!WorldManager.main.invertControls) y = -y;
+        if(UIManager.main.InvertY) y = -y;
         
         xInput += x;
         yInput += y;

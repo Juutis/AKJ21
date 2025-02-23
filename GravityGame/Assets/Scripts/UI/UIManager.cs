@@ -27,6 +27,8 @@ public class UIManager: MonoBehaviour {
 
     private bool storageFullMessage = false;
 
+    public bool InvertY = false;
+
     void Awake()
     {
         main = this;
