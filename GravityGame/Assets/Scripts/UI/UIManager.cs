@@ -57,6 +57,22 @@ public class UIManager: MonoBehaviour {
 
     }
 
+    public void ShowCurtains(UnityAction showCallback) {
+        uiCurtainTransition.Show(delegate
+        {
+            showCallback?.Invoke();
+        }
+        );
+    }
+
+    public void HideCurtains(UnityAction hideCallback)
+    {
+        uiCurtainTransition.Hide(delegate
+        {
+            hideCallback?.Invoke();
+        }
+        );
+    }
     public void CurtainTransition(UnityAction showCallback, UnityAction hideCallback) {
         uiCurtainTransition.Show(delegate {
             showCallback?.Invoke();

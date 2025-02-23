@@ -26,6 +26,10 @@ public class Shop: MonoBehaviour {
     private Transform homeBase;
 
     [SerializeField]
+    private float distanceFromShopToEnter = 20f;
+
+
+    [SerializeField]
     private Transform elementContainer;
     [SerializeField]
     private List<ShipUpgradeConfigScriptableObject> upgrades = new();
@@ -89,7 +93,6 @@ public class Shop: MonoBehaviour {
         UIManager.main.HideStorageIsFull();
     }
 
-    private float minDistanceFromShop = 30f;
 
     public bool IsInRangeOfShop() {
         var player = GameObject.FindGameObjectWithTag("Player");
@@ -97,7 +100,7 @@ public class Shop: MonoBehaviour {
             Debug.Log("Player not found!!");
             return false;
         }
-        return Vector3.Distance(homeBase.position, player.transform.position) <= minDistanceFromShop;
+        return Vector3.Distance(homeBase.position, player.transform.position) <= distanceFromShopToEnter;
     }
 
     void Update()
