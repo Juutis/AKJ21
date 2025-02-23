@@ -22,6 +22,10 @@ public class Turret : MonoBehaviour
     private float lastHit = 0f;
     private float hitCD = 0f;
 
+    
+    [SerializeField]
+    private GameObject dieExplosionPrefab;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -84,6 +88,8 @@ public class Turret : MonoBehaviour
 
     private void Explode()
     {
+        var explosion = Instantiate(dieExplosionPrefab);
+        explosion.transform.position = transform.position;
         Destroy(gameObject);
 
         foreach (Rigidbody drop in drops)

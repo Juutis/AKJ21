@@ -9,6 +9,11 @@ public class Bullet : MonoBehaviour
         transform.position = position;
         rb.position = position;
         rb.linearVelocity = velocity;
+        Invoke("Kill", 5.0f);
+    }
+
+    public void Kill() {
+        Destroy(gameObject);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

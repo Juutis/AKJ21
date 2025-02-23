@@ -55,6 +55,7 @@ MonoBehaviour:
   dropRates:
   - Chance: 1
     Prefab: {fileID: 8396769526898797003, guid: af6459c01aca5c441979d349517361e0, type: 3}
+  dieExplosionPrefab: {fileID: 1911289480990926424, guid: 52d41c82c868b3443ae13587827fd1c6, type: 3}
 --- !u!136 &2649203695079812818
 CapsuleCollider:
   m_ObjectHideFlags: 0
