@@ -95,9 +95,11 @@ public class Shop: MonoBehaviour {
 
 
     public bool IsInRangeOfShop() {
+        if  (homeBase == null) {
+            return false;
+        }
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) {
-            Debug.Log("Player not found!!");
             return false;
         }
         return Vector3.Distance(homeBase.position, player.transform.position) <= distanceFromShopToEnter;
