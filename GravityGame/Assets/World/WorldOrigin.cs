@@ -17,6 +17,13 @@ public class WorldOrigin : MonoBehaviour
     [SerializeField]
     private Color maxColor;
 
+    private bool isHiding;
+    private float hidingStarted = 0f;
+    private float hidingStopped = 0f;
+    private float hiddenAmount = 0f;
+    private float hideDuration = 1f;
+    private float cacheDist = 0f;
+
 
     void Awake()
     {
@@ -35,12 +42,51 @@ public class WorldOrigin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isHiding)
+        {
+            hiddenAmount = Mathf.Clamp01((Time.time - hidingStarted) / hideDuration);
+            stardustRenderer.sharedMaterial.color = Color.Lerp(maxColor, minColor, hiddenAmount);
+        }
+        else if (hiddenAmount > 0f)
+        {
+            hiddenAmount = Mathf.Clamp((Time.time - hidingStopped) / hideDuration, 0, cacheDist);
+            stardustRenderer.sharedMaterial.color = Color.Lerp(minColor, maxColor, hiddenAmount);
+        }
     }
 
     public void SetPlayerDistance(float dist)
     {
+        cacheDist = dist;
+
+        if (isHiding || hiddenAmount > 0)
+        {
+            return;
+        }
+
         var t = dist / WorldRadius;
         t = Mathf.Clamp01(t);
         stardustRenderer.sharedMaterial.color = Color.Lerp(minColor, maxColor, t);
+    }
+
+    public void SetHiding(bool hide)
+    {
+        if (isHiding == hide)
+        {
+            return;
+        }
+
+        isHiding = hide;
+
+        if (hide)
+        {
+            Debug.Log("Hiding");
+            hidingStarted = Time.time;
+        }
+        else
+        {
+            Debug.Log("Unhiding");
+            hidingStopped = Time.time;
+        }
+
     }
 }

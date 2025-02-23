@@ -7,6 +7,9 @@ public class Laser : MonoBehaviour
     private float beamLength;
 
     [SerializeField]
+    private float probeLength;
+
+    [SerializeField]
     private float laserCD;
     private float lastHit = 0f;
 
@@ -26,12 +29,13 @@ public class Laser : MonoBehaviour
         {
             Pulse();
         }
+
+        Probe();
     }
 
     private void Pulse()
     {
         RaycastHit[] hits = Physics.RaycastAll(origin.position, origin.forward, beamLength, LayerMask.GetMask("Destroyable"));
-        Debug.DrawRay(origin.position, origin.forward, Color.red);
 
         if (hits.Length == 0)
         {
@@ -40,9 +44,29 @@ public class Laser : MonoBehaviour
 
         RaycastHit nearest = hits.OrderBy(x => x.distance).FirstOrDefault(x => x.collider != null);
 
-        if (nearest.collider.gameObject.TryGetComponent(out DestroyableAsteroid destroyable))
+        if (nearest.collider.gameObject.TryGetComponent(out DestroyableAsteroid asteroid))
         {
-            destroyable.Hit();
+            asteroid.Hit();
+        }
+
+        if (nearest.collider.gameObject.TryGetComponent(out DestroyablePortal portal))
+        {
+            portal.Hit();
+        }
+    }
+
+    private void Probe()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(origin.position, origin.forward, probeLength, LayerMask.GetMask("Portal"));
+        WorldOrigin worldOrigin = WorldOrigin.OfActiveWorld;
+
+        if (hits.Length > 0)
+        {
+            worldOrigin.SetHiding(true);
+        }
+        else
+        {
+            worldOrigin.SetHiding(false);
         }
     }
 
