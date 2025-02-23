@@ -2017,7 +2017,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[storage full! base]'
+  m_text: '[storage full! deposit items in shop]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fac25207913d707418c61a3261d118b0, type: 2}
   m_sharedMaterial: {fileID: 2861833479980265675, guid: fac25207913d707418c61a3261d118b0, type: 2}
