@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class Shop: MonoBehaviour {
     public static Shop main;
@@ -70,9 +72,19 @@ public class Shop: MonoBehaviour {
 
 
     public void TransferShipResourcesToBase() {
+        List<string> addedResources = new();
         foreach (var resource in shipInventory.GetAll()) {
             baseInventory.AddResource(resource.Resource, resource.Amount);
+            if (resource.Amount > 0) {
+                addedResources.Add($"{resource.Amount} {resource.Name}");
+            }
             shipInventory.Consume(resource.Resource.ResourceType, resource.Amount);
+        }
+        if (addedResources.Count > 0) {
+
+            UIManager.main.ShowMessage($"Ship to Base: {string.Join(" | ", addedResources)}");
+        } else {
+            UIManager.main.ShowMessage("Ship had no resources to transfer to base");
         }
         UIManager.main.HideStorageIsFull();
     }
