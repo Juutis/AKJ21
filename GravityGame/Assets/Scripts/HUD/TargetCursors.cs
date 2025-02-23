@@ -20,7 +20,6 @@ public class TargetCursors : MonoBehaviour
     private Camera cam;
     private RectTransform parentRect;
 
-    private Dictionary<string, GameObject> cursorCache = new();
     private Dictionary<string, List<CursorInstance>> cursorInstances = new();
 
 
@@ -35,7 +34,6 @@ public class TargetCursors : MonoBehaviour
     {
         if (Time.time - lastPoll > pollTime)
         {
-            // Debug.Log($"PROBING: {Time.time}");
             ProbeTargets();
         }
 
@@ -46,8 +44,17 @@ public class TargetCursors : MonoBehaviour
     {
         foreach (KeyValuePair<string, List<CursorInstance>> entry in cursorInstances)
         {
+            List<CursorInstance> deleted = new();
+
             foreach (CursorInstance instance in entry.Value)
             {
+                if (instance.target == null )
+                {
+                    deleted.Add(instance);
+                    Destroy(instance.cursor);
+                    continue;
+                }
+
                 RectTransform rectTransform = canvas.GetComponent<RectTransform>();
                 Vector3 targetPos = instance.target.transform.position;
                 Vector3 dir = cam.transform.position - targetPos;
@@ -55,10 +62,23 @@ public class TargetCursors : MonoBehaviour
                 Vector3 oproj = dir - proj;
                 float projDot = Vector3.Dot(proj, cam.transform.forward);
 
-
+                // Object behind camera
                 if (projDot > 0)
                 {
-                    targetPos = targetPos + (1 / (oproj.magnitude + 0.001f)) * 1000f * dir.magnitude * cam.transform.up; //- oproj * (10f - oproj.magnitude);
+                    targetPos = targetPos + (1 / (oproj.magnitude + 0.001f)) * 1000f * dir.magnitude * cam.transform.up;
+                    instance.cursor.SetActive(true);
+                }
+                else
+                {
+
+                    if (dir.magnitude < instance.config.trackMinRange)
+                    {
+                        instance.cursor.SetActive(false);
+                    }
+                    else
+                    {
+                        instance.cursor.SetActive(true);
+                    }
                 }
 
 
@@ -70,18 +90,14 @@ public class TargetCursors : MonoBehaviour
 
                 rect.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(rect.anchoredPosition.x - vpPos.x, vpPos.y - rect.anchoredPosition.y) * Mathf.Rad2Deg);
             }
+
+            entry.Value.RemoveAll(x => deleted.Contains(x));
         }
     }
 
     private void ProbeTargets()
     {
         lastPoll = Time.time;
-        // foreach (TargetCursorConfig targetCursor in targetCursorConfig)
-        // {
-        //     List<GameObject> objs = GameObject.FindGameObjectsWithTag(targetCursor.tag).ToList();
-        //     GameObject nearest = objs.OrderBy(x => Vector3.Distance(x.transform.position, transform.position)).FirstOrDefault();
-        //     AddOrUpdate(cursorCache, targetCursor.tag, nearest);
-        // }
 
         foreach (TargetCursorConfig targetCursor in targetCursorConfig)
         {
@@ -118,12 +134,13 @@ public class TargetCursors : MonoBehaviour
                         continue;
                     }
 
-                    CursorInstance instance = InstantiateCursor(targetCursor, targets);
+                    cursorInstances[curTag].ForEach(x => Destroy(x.cursor));
+                    CursorInstance instance = InstantiateCursor(targetCursor, targets.FirstOrDefault());
                     cursorInstances[curTag].Add(instance);
                 }
                 else
                 {
-                    CursorInstance instance = InstantiateCursor(targetCursor, targets);
+                    CursorInstance instance = InstantiateCursor(targetCursor, targets.FirstOrDefault());
 
                     cursorInstances.Add(curTag, new() { instance });
                 }
@@ -142,18 +159,18 @@ public class TargetCursors : MonoBehaviour
                         continue;
                     }
 
-                    CursorInstance instance = InstantiateCursor(targetCursor, targets);
+                    CursorInstance instance = InstantiateCursor(targetCursor, target);
                     cursorInstances[curTag].Add(instance);
                 }
             }
         }
     }
 
-    private CursorInstance InstantiateCursor(TargetCursorConfig cursorConfig, IEnumerable<GameObject> targets)
+    private CursorInstance InstantiateCursor(TargetCursorConfig cursorConfig, GameObject target)
     {
         CursorInstance instance = new();
         instance.cursor = Instantiate(cursorConfig.cursorPrefab);
-        instance.target = targets.FirstOrDefault();
+        instance.target = target;
         instance.config = cursorConfig;
         instance.cursor.transform.parent = transform;
         return instance;
@@ -205,6 +222,7 @@ public class TargetCursorConfig
     public bool trackAll;
     public bool trackInRange;
     public float trackRange;
+    public float trackMinRange;
     public bool disabled;
 }
 
