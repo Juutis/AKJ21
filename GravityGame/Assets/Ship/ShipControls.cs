@@ -72,7 +72,7 @@ public class ShipControls : MonoBehaviour
         var x = Input.GetAxisRaw("Mouse X");
         var y = Input.GetAxisRaw("Mouse Y");
         var z = Input.GetAxis("Horizontal");
-        //if(UIManager.main.InvertY) y = -y;
+        if(UIManager.main.InvertY) y = -y;
         
         if (isDead) {
             x = 0;
