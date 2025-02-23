@@ -51,7 +51,8 @@ public class Laser : MonoBehaviour
 
         if (nearest.collider.gameObject.TryGetComponent(out DestroyablePortal portal))
         {
-            portal.Hit();
+            var engineLevel = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Laser).IntValue;
+            portal.Hit(engineLevel);
         }
     }
 

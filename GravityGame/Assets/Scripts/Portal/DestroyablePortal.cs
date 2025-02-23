@@ -65,8 +65,11 @@ public class DestroyablePortal : MonoBehaviour
     {
     }
 
-    public void Hit()
+    public void Hit(int laserLevel)
     {
+        if (laserLevel < laserLevelRequirement) {
+            return;
+        }
         if (Time.time - lastHit < hitCD)
         {
             return;
