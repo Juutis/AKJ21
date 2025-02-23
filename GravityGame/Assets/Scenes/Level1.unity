@@ -247,6 +247,10 @@ PrefabInstance:
       value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: Level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[0].Origin
       value: 
       objectReference: {fileID: 346640769}
