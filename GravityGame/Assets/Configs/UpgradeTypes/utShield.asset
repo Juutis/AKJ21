@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Shield
   Description: Your main defense against pulse cannon fire from pirate ships
-  Icon: {fileID: 21300000, guid: e0264e299e9f7b5449afd103be8cd224, type: 3}
+  Icon: {fileID: 21300000, guid: 64192744f30fea54f8388f10aa26e01f, type: 3}
   UpgradeType: 2

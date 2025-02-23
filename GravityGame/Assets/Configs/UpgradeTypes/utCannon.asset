@@ -16,5 +16,5 @@ MonoBehaviour:
   Description: PlasmaCannon Mk. II is the latest and shiniest from WepTec Industries.
     With its dual-pulse plasma impact cannons it should provide you ample defense
     against any foe you may face.
-  Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  Icon: {fileID: 21300000, guid: 7bbd64a006eab2f45b041e9c4399c595, type: 3}
   UpgradeType: 0

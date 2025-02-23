@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Engine
   Description: Engine
-  Icon: {fileID: -1276800327, guid: 6da79d41c5a8323459e4bbb28a187db8, type: 3}
+  Icon: {fileID: 21300000, guid: 1fd0291e095cef04388ebac9bd551c7b, type: 3}
   UpgradeType: 4
