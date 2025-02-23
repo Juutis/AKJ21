@@ -41,15 +41,10 @@ public class ShipHealth : MonoBehaviour
     float hpRechargeTimer = 0f;
     bool isRecharging = false;
 
-    public void UpdateShield() {
-        ShipUpgrade upgrade = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Shield);
-        if (upgrade != null) {
-            maxHP = upgrade.IntValue;
-        }
-    }
-
     void Update()
     {
+        maxHP = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Shield).IntValue;
+
         if (!isRecharging) {
             if (currentHP < maxHP) {
                 isRecharging = true;

@@ -21,6 +21,9 @@ public class DestroyableAsteroid : MonoBehaviour
     private float lastHit = 0f;
     private float hitCD = .2f;
 
+    [SerializeField]
+    private GameObject explosionPrefab;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -75,26 +78,18 @@ public class DestroyableAsteroid : MonoBehaviour
     {
         gameObject.GetComponent<SphereCollider>().enabled = false;
 
-        foreach (GameObject piece in pieces)
+        foreach (DropRate dropRate in dropRates)
         {
-            piece.transform.parent = null;
-            Rigidbody body = piece.AddComponent<Rigidbody>();
-            body.useGravity = false;
-            body.linearVelocity = (piece.transform.position - transform.position).normalized * (Random.value * 15f + 15f);
-
-            foreach (DropRate dropRate in dropRates)
+            if (dropRate.Chance > Random.value)
             {
-                if (dropRate.Chance > Random.value)
-                {
-                    GameObject drop = Instantiate(dropRate.Prefab);
-                    drops.Add(drop.GetComponent<Rigidbody>());
-                    drop.transform.position = transform.position + Random.onUnitSphere * 0.5f;
-                    drop.SetActive(false);
-                }
+                GameObject drop = Instantiate(dropRate.Prefab);
+                drops.Add(drop.GetComponent<Rigidbody>());
+                drop.transform.position = transform.position + Random.onUnitSphere * 0.5f;
+                drop.SetActive(false);
             }
-
-            Invoke("Delete", 5f);
         }
+
+        //Invoke("Delete", 5f);
 
         foreach (Rigidbody drop in drops)
         {
@@ -102,6 +97,9 @@ public class DestroyableAsteroid : MonoBehaviour
             drop.gameObject.SetActive(true);
             drop.linearVelocity = (drop.transform.position - transform.position).normalized * (Random.value * 5f + 5f);
         }
+        var expl = Instantiate(explosionPrefab);
+        expl.transform.position = transform.position;
+        Delete();
     }
 
     private void Delete()

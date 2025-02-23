@@ -111,10 +111,6 @@ public class Shop: MonoBehaviour {
         return shipInventory.AddResource(ResourceManager.main.GetResource(resourceType), amount);
     }
 
-    public void UpdateShipStorage() {
-        shipInventory.UpdateStorage();
-    }
-
     public string TransferShipResourcesToBase() {
         List<string> addedResources = new();
         foreach (var resource in shipInventory.GetAll()) {
@@ -139,6 +135,9 @@ public class Shop: MonoBehaviour {
         }
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) {
+            return false;
+        }
+        if (player.GetComponent<ShipControls>().isDead) {
             return false;
         }
         return Vector3.Distance(GetBase().position, player.transform.position) <= distanceFromShopToEnter;

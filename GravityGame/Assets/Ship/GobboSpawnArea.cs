@@ -39,7 +39,7 @@ public class GobboSpawnArea : MonoBehaviour
         }
 
         if (!ready && distance > resetDistance) {
-            ready = true;
+            //ready = true;
         }
     }
 

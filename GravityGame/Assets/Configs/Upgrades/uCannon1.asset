@@ -25,3 +25,5 @@ MonoBehaviour:
       amount: 5
     - resourceType: 1
       amount: 2
+    - resourceType: 3
+      amount: 1

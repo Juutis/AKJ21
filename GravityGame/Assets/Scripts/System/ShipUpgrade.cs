@@ -30,10 +30,10 @@ public class ShipUpgrade : MonoBehaviour
             // implement cannon upgrade
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Storage) {
             // add any visual changes here
-            Shop.main.UpdateShipStorage();
+            //Shop.main.UpdateShipStorage();
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Shield) {
             // implement shield upgrade
-            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipHealth>().UpdateShield();
+            // GameObject.FindGameObjectWithTag("Player").GetComponent<ShipHealth>().UpdateShield();
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Laser) {
             // implement laser upgrade
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Engine) {
