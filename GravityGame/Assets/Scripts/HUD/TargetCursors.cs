@@ -9,8 +9,6 @@ public class TargetCursors : MonoBehaviour
     [SerializeField]
     private List<TargetCursorConfig> targetCursorConfig = new();
     [SerializeField]
-    private Camera cam;
-    [SerializeField]
     private Canvas canvas;
     [SerializeField]
     private float borderPad;
@@ -19,6 +17,8 @@ public class TargetCursors : MonoBehaviour
 
     private float pollTime = 1f;
     private float lastPoll = 0f;
+    private Camera cam;
+    private RectTransform parentRect;
 
     private Dictionary<string, GameObject> cursorCache = new();
     private Dictionary<string, List<CursorInstance>> cursorInstances = new();
@@ -26,7 +26,8 @@ public class TargetCursors : MonoBehaviour
 
     void Start()
     {
-
+        cam = Camera.main;
+        parentRect = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -34,7 +35,7 @@ public class TargetCursors : MonoBehaviour
     {
         if (Time.time - lastPoll > pollTime)
         {
-            Debug.Log($"PROBING: {Time.time}");
+            // Debug.Log($"PROBING: {Time.time}");
             ProbeTargets();
         }
 
@@ -48,51 +49,26 @@ public class TargetCursors : MonoBehaviour
             foreach (CursorInstance instance in entry.Value)
             {
                 RectTransform rectTransform = canvas.GetComponent<RectTransform>();
-                Vector2 center = rectTransform.rect.center;
-                Vector2 size = rectTransform.rect.size;
-                Vector3 vpPos = cam.ViewportToScreenPoint(cam.WorldToViewportPoint(instance.cursor.transform.position));
-                float yMin = center.y + borderPad;
-                float yMax = center.y + size.y - borderPad;
-                float xMin = center.x + borderPad;
-                float xMax = center.x + size.x - borderPad;
+                Vector3 targetPos = instance.target.transform.position;
+                Vector3 dir = cam.transform.position - targetPos;
+                Vector3 proj = Vector3.Dot(dir, cam.transform.forward) * cam.transform.forward;
+                Vector3 oproj = dir - proj;
+                float projDot = Vector3.Dot(proj, cam.transform.forward);
 
-                float k1 = size.y / size.x;
-                float k2 = -size.y / size.x;
 
-                // if (vpPos.z < 0)
-                // {
-                //     if (vpPos.y > k1 * vpPos.x && vpPos.y > k2 * vpPos.x)
-                //     {
-                //         vpPos.y = yMax;
-                //     }
-                //     else if (vpPos.y < k1 * vpPos.x && vpPos.y < k2 * vpPos.x)
-                //     {
-                //         vpPos.y = yMin;
-                //     }
-                //     else if (vpPos.y < k1 * vpPos.x && vpPos.y > k2 * vpPos.x)
-                //     {
-                //         vpPos.x = xMax;
-                //     }
-                //     else if (vpPos.y > k1 * vpPos.x && vpPos.y < k2 * vpPos.x)
-                //     {
-                //         vpPos.x = xMin;
-                //     }
-                // }
-
-                Vector3 clamped = new Vector3(Mathf.Clamp(vpPos.x, xMin, xMax), Mathf.Clamp(vpPos.y, yMin, yMax), vpPos.z);
-
-                if (vpPos.z < 0 && entry.Key == "Respawn")
+                if (projDot > 0)
                 {
-                }
-                else if (entry.Key == "Respawn")
-                {
-
+                    targetPos = targetPos + (1 / (oproj.magnitude + 0.001f)) * 1000f * dir.magnitude * cam.transform.up; //- oproj * (10f - oproj.magnitude);
                 }
 
-                TargetCursorConfig cursor = targetCursorConfig.FirstOrDefault(x => x.tag == entry.Key);
-                instance.cursor.GetComponent<RectTransform>().rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(vpPos.y, vpPos.x) - 90);
 
-                instance.cursor.GetComponent<RectTransform>().position = clamped;
+                Vector2 vpPos = WorldSpaceToCanvas(rectTransform, cam, targetPos);
+
+                RectTransform rect = instance.cursor.GetComponent<RectTransform>();
+                rect.anchoredPosition = vpPos;
+                ClampToWindow(rect, parentRect);
+
+                rect.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(rect.anchoredPosition.x - vpPos.x, vpPos.y - rect.anchoredPosition.y) * Mathf.Rad2Deg);
             }
         }
     }
@@ -109,6 +85,8 @@ public class TargetCursors : MonoBehaviour
 
         foreach (TargetCursorConfig targetCursor in targetCursorConfig)
         {
+            if (targetCursor.disabled) { continue; }
+
             string curTag = targetCursor.tag;
 
             IEnumerable<GameObject> targets = GameObject.FindGameObjectsWithTag(curTag);
@@ -192,6 +170,31 @@ public class TargetCursors : MonoBehaviour
             dict.Add(key, value);
         }
     }
+
+    private Vector2 WorldSpaceToCanvas(RectTransform canvasRect, Camera camera, Vector3 worldPos)
+    {
+        Vector2 viewportPosition = camera.WorldToViewportPoint(worldPos);
+
+        float x = viewportPosition.x * canvasRect.sizeDelta.x - canvasRect.sizeDelta.x * 0.5f;
+        float y = viewportPosition.y * canvasRect.sizeDelta.y - canvasRect.sizeDelta.y * 0.5f;
+
+        Vector2 canvasPos = new Vector2(x, y);
+
+        return canvasPos;
+    }
+
+    private void ClampToWindow(RectTransform element, RectTransform parent)
+    {
+        Vector3 pos = element.localPosition;
+
+        Vector3 minPosition = parent.rect.min - element.rect.min;
+        Vector3 maxPosition = parent.rect.max - element.rect.max;
+
+        pos.x = Mathf.Clamp(element.localPosition.x, minPosition.x, maxPosition.x);
+        pos.y = Mathf.Clamp(element.localPosition.y, minPosition.y, maxPosition.y);
+
+        element.localPosition = pos;
+    }
 }
 
 [Serializable]
@@ -202,6 +205,7 @@ public class TargetCursorConfig
     public bool trackAll;
     public bool trackInRange;
     public float trackRange;
+    public bool disabled;
 }
 
 public class CursorInstance
