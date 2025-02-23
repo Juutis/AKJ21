@@ -37,13 +37,15 @@ public class UIManager: MonoBehaviour {
 
     void Start() {
         Cursor.visible = false;
+/*#if UNITY_EDITOR
+        Shop.main.AddResourceToShip(ResourceType.Hydrogen, 20);
+        #endif*/
     }
 
     void Update()
     {
 #if UNITY_EDITOR
         // test endgame
-        Shop.main.AddResourceToShip(ResourceType.Hydrogen, 20);
         //Shop.main.AddResourceToShip(ResourceType.Titanium, 1);
         if (Input.GetKeyDown(KeyCode.Q)) {
             TheEnd();
@@ -192,6 +194,7 @@ public class UIManager: MonoBehaviour {
         uiBaseInventory.UpdateResourceView(resource);
     }
     public void UpdateInventoryResourceView(InventoryResource resource) {
+        Debug.Log($"Ship inventory: {resource.Name} now {resource.Amount}");
         uiShipInventory.UpdateResourceView(resource);
     }
 

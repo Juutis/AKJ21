@@ -21,8 +21,8 @@ public class ShipUpgradeManager : MonoBehaviour
         foreach(ShipUpgradeConfigScriptableObject upgradeConfig in initialUpgrades) {
             var upgrade = Instantiate(shipUpgradePrefab, elementContainer);
             upgrade.Initialize(upgradeConfig);
-            upgrade.Apply();
             upgrades.Add(upgrade);
+            upgrade.Apply();
         }
     }
 

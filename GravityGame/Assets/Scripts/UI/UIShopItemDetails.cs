@@ -22,7 +22,6 @@ public class UIShopItemDetails : MonoBehaviour
 
     public void Initialize(ShopItem shopItem)
     {
-        Debug.Log($"Initializing {shopItem.Name}");
         imgIcon.sprite = shopItem.Icon;
         txtName.text = shopItem.Name;
         txtDescription.text = shopItem.Description;
