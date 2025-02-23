@@ -100,6 +100,9 @@ public class Shop: MonoBehaviour {
         if (player == null) {
             return false;
         }
+        if (player.GetComponent<ShipControls>().isDead) {
+            return false;
+        }
         return Vector3.Distance(homeBase.position, player.transform.position) <= distanceFromShopToEnter;
     }
 

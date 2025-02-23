@@ -16,8 +16,8 @@ MonoBehaviour:
   Name: Laser II
   Description: Laser II
   UpgradeTier: 1
-  IntValue: 0
+  IntValue: 1
   Cost:
     costs:
     - resourceType: 2
-      amount: 4
+      amount: 1
