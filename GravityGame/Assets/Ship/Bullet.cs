@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -6,6 +7,7 @@ public class Bullet : MonoBehaviour
 
     [SerializeField]
     private ParticleSystem poof;
+    private int layerMask;
 
     public void Init(Vector3 position, Vector3 velocity) {
         rb = GetComponent<Rigidbody>();
@@ -13,6 +15,7 @@ public class Bullet : MonoBehaviour
         rb.position = position;
         rb.linearVelocity = velocity;
         Invoke("Kill", 5.0f);
+        layerMask = LayerMask.GetMask("Default");
     }
 
     public void Kill() {
@@ -29,6 +32,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Physics.Raycast(transform.position, transform.forward, rb.linearVelocity.magnitude * Time.deltaTime, layerMask)) {
+            Kill();
+        }
     }
 }
