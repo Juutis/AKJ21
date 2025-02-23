@@ -28,7 +28,6 @@ public class ShipControls : MonoBehaviour
     private CinemachineThirdPersonFollow thirdPersonCamera;
 
     private float speed;
-    private float maxSpeed = 20.0f;
     private float minSpeed = -5.0f;
 
     [SerializeField]
@@ -50,6 +49,11 @@ public class ShipControls : MonoBehaviour
         zoom = thirdPersonCamera.CameraDistance;
         laser = GetComponent<Laser>();
         laser.SetOrigin(laserParticles.transform);
+        Invoke("LockCursor", 0.05f);
+    }
+
+    public void LockCursor() {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -141,12 +145,20 @@ public class ShipControls : MonoBehaviour
         }
         zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
         thirdPersonCamera.CameraDistance = zoom;
-        zoomDiff = Mathf.MoveTowards(zoomDiff, 0.0f, 10f * Time.deltaTime);
+        zoomDiff = Mathf.MoveTowards(zoomDiff, 0.0f, 25f * Time.deltaTime);
     }
 
     void handleAcceleration() {
+        var engineLevel = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Engine).IntValue;
+        var acceleration = 30.0f;
+        var maxSpeed = 20.0f;
+        if (engineLevel > 0) {
+            acceleration = 50.0f;
+            maxSpeed = 50.0f;
+        }
+
         var input = Input.GetAxis("Vertical");
-        speed += input * Time.deltaTime * 30.0f;
+        speed += input * Time.deltaTime * acceleration;
         //speed = Mathf.MoveTowards(speed, 0.0f, 5.0f * Time.deltaTime);
         speed = speed * Mathf.Pow(0.9f, Time.deltaTime*30);
         speed = Mathf.Clamp(speed, minSpeed, maxSpeed);

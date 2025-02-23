@@ -5,9 +5,14 @@ using UnityEngine;
 public class Cannons : MonoBehaviour
 {
     [SerializeField]
-    private List<CannonGroup> cannonGroups;
+    private List<CannonGroup> tier0CannonGroups;
 
-    private float shootInterval = 0.1f;
+    [SerializeField]
+    private List<CannonGroup> tier1CannonGroups;
+
+    [SerializeField]
+    private List<CannonGroup> tier2CannonGroups;
+
     private float shootTimer = 0.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,14 +31,24 @@ public class Cannons : MonoBehaviour
 
     public void Shoot() {
         if (shootTimer < Time.time) {
-            FireNextCannonGroup();
+            var shootInterval = FireNextCannonGroup();
             shootTimer = Time.time + shootInterval;
         }
     }
 
     private int currentCannonGroup = 0;
 
-    private void FireNextCannonGroup() {
+    private float FireNextCannonGroup() {
+        var cannonLevel = ShipUpgradeManager.main.GetCurrentHighestUpgrade(ShipUpgradeType.Cannon);
+        var cannonGroups = tier0CannonGroups;
+        var shootInterval = 0.2f;
+        if (cannonLevel.IntValue == 1) {
+            cannonGroups = tier1CannonGroups;
+            shootInterval = 0.125f;
+        } else if (cannonLevel.IntValue == 2) {
+            cannonGroups = tier2CannonGroups;
+            shootInterval = 0.05f;
+        }
         var cannonGroup = cannonGroups[currentCannonGroup];
         foreach(var c in cannonGroup.cannons) {
             c.Fire();
@@ -42,6 +57,7 @@ public class Cannons : MonoBehaviour
         if (currentCannonGroup >= cannonGroups.Count) {
             currentCannonGroup = 0;
         }
+        return shootInterval;
     }
 }
 

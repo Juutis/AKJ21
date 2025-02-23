@@ -18,9 +18,10 @@ MonoBehaviour:
     With its dual-pulse plasma impact cannons it should provide you ample defense
     against any foe you may face.
   UpgradeTier: 1
+  IntValue: 1
   Cost:
     costs:
     - resourceType: 0
-      amount: 5
+      amount: 1
     - resourceType: 1
-      amount: 10
+      amount: 1

@@ -16,8 +16,8 @@ MonoBehaviour:
   Name: Engine II
   Description: Engine II
   UpgradeTier: 1
-  IntValue: 0
+  IntValue: 1
   Cost:
     costs:
     - resourceType: 1
-      amount: 25
+      amount: 1
