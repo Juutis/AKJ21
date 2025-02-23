@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc06c69124d1389428ba186ef723684e, type: 3}
-  m_Name: utEngine1
+  m_Name: utLaser3
   m_EditorClassIdentifier: 
-  TypeConfig: {fileID: 11400000, guid: b1cf9b58aa26a3347a8a30c9695542df, type: 2}
-  Name: Engine II
-  Description: Engine II
+  TypeConfig: {fileID: 11400000, guid: 8f400b1405c2a6c48b2752080fdb0e46, type: 2}
+  Name: Laser II
+  Description: Laser II
   UpgradeTier: 1
-  IntValue: 1
+  IntValue: 3
   Cost:
     costs:
-    - resourceType: 1
+    - resourceType: 2
       amount: 15

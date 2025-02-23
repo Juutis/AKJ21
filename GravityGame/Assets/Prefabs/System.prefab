@@ -298,6 +298,11 @@ MonoBehaviour:
       Spawns:
       - Count: 1
         Prefab: {fileID: 5123558948989654555, guid: bc1766e8523d9164ca544dc956b9697e, type: 3}
+    - MinRadius: 150
+      MaxRadius: 180
+      Spawns:
+      - Count: 3
+        Prefab: {fileID: 2969813555231660389, guid: 31881417978c0a347914ced6c385e833, type: 3}
   - Layers:
     - MinRadius: 345
       MaxRadius: 345
@@ -338,7 +343,7 @@ MonoBehaviour:
     - MinRadius: 150
       MaxRadius: 350
       Spawns:
-      - Count: 3
+      - Count: 8
         Prefab: {fileID: 2969813555231660389, guid: 31881417978c0a347914ced6c385e833, type: 3}
   - Layers:
     - MinRadius: 20
@@ -377,7 +382,7 @@ MonoBehaviour:
         Prefab: {fileID: 6272246388864631682, guid: f110f3f4ac24be841927ade090257a16, type: 3}
       - Count: 10
         Prefab: {fileID: 9169519254076693938, guid: 4a1a62d9f828afd45aacf9af6e5d7f25, type: 3}
-      - Count: 5
+      - Count: 25
         Prefab: {fileID: 2969813555231660389, guid: 31881417978c0a347914ced6c385e833, type: 3}
       - Count: 10
         Prefab: {fileID: 313630681498875951, guid: ab9613d02ded72d47bed10f350cc10ec, type: 3}
@@ -442,13 +447,14 @@ MonoBehaviour:
   elementContainer: {fileID: 4966029458490383236}
   upgrades:
   - {fileID: 11400000, guid: dbec189143b7e7845bb1bd85844cd884, type: 2}
+  - {fileID: 11400000, guid: e9ffe85359ca88f45bc55083d2d48189, type: 2}
   - {fileID: 11400000, guid: bc84fade4ab8fab41aed580de32b2707, type: 2}
+  - {fileID: 11400000, guid: fe0309fd8d28a3b408d7ab71954b0847, type: 2}
   - {fileID: 11400000, guid: ad822bb5c8c65c344a38d5a305cf4e0c, type: 2}
   - {fileID: 11400000, guid: 3c714b643e3867a4587e21a42ef9cde7, type: 2}
-  - {fileID: 11400000, guid: aed3705706c162b48829c7a431ac7db8, type: 2}
   - {fileID: 11400000, guid: fcc6bba6b6c662d40ba0cffb903644ef, type: 2}
-  - {fileID: 11400000, guid: e9ffe85359ca88f45bc55083d2d48189, type: 2}
-  - {fileID: 11400000, guid: fe0309fd8d28a3b408d7ab71954b0847, type: 2}
+  - {fileID: 11400000, guid: 0164d54effcdae2429f4ee41310ddb6a, type: 2}
+  - {fileID: 11400000, guid: f0fc897ac234dab4bb15c72204e18850, type: 2}
 --- !u!1 &6917711251876543340
 GameObject:
   m_ObjectHideFlags: 0

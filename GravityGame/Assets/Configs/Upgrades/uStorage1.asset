@@ -20,4 +20,4 @@ MonoBehaviour:
   Cost:
     costs:
     - resourceType: 1
-      amount: 25
+      amount: 10
