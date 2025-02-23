@@ -12,12 +12,14 @@ public class LevelGenerator : MonoBehaviour
 
     private int currentLevel = -1;
 
+    public int Level = 0;
+
     [SerializeField]
     private Transform worldContainer;
     [SerializeField]
     private List<LevelGeneratorLevel> levels = new();
     public void NextLevel() {
-        int nextLevel = currentLevel + 1;
+        int nextLevel = Level;
         Debug.Log($"Next level: {nextLevel}");
         if (levels.Count > nextLevel) {
             currentLevel  = nextLevel;
@@ -41,7 +43,8 @@ public class LevelGenerator : MonoBehaviour
                     while (true) {
                         var distance = Random.Range(layer.MinRadius, layer.MaxRadius);
                         var direction = Random.onUnitSphere;
-                        var positionCandidate = level.Origin.transform.position + direction * distance;
+                        var levelOrigin = WorldOrigin.OfActiveWorld;
+                        var positionCandidate = levelOrigin.transform.position + direction * distance;
                         if (isOccupied(positionCandidate, positions)) {
                             attempts++;
                             if (attempts > 30) {
@@ -82,8 +85,6 @@ public class LevelGenerator : MonoBehaviour
 [System.Serializable]
 public class LevelGeneratorLevel {
     public List<LevelLayer> Layers;
-
-    public WorldOrigin Origin;
 }
 
 [System.Serializable]

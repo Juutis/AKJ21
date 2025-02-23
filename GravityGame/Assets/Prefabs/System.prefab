@@ -261,6 +261,49 @@ MonoBehaviour:
   worldContainer: {fileID: 6827621690798467132}
   levels:
   - Layers:
+    - MinRadius: 50
+      MaxRadius: 100
+      Spawns:
+      - Count: 2
+        Prefab: {fileID: 9169519254076693938, guid: 4a1a62d9f828afd45aacf9af6e5d7f25, type: 3}
+      - Count: 3
+        Prefab: {fileID: 6272246388864631682, guid: f110f3f4ac24be841927ade090257a16, type: 3}
+    - MinRadius: 125
+      MaxRadius: 150
+      Spawns:
+      - Count: 2
+        Prefab: {fileID: 1646610465568782720, guid: 4ef7866229356dc4f9f7c97b9811717e, type: 3}
+      - Count: 5
+        Prefab: {fileID: 5265469865791589549, guid: 71bf878f9b8d182498c6b4a0830e59a3, type: 3}
+    - MinRadius: 75
+      MaxRadius: 150
+      Spawns:
+      - Count: 8
+        Prefab: {fileID: 6116092715807496013, guid: 184f582bc8ab1784696da412da957b3d, type: 3}
+      - Count: 1
+        Prefab: {fileID: 9169519254076693938, guid: e18f1439d6d1e1c439c9dec0698165c0, type: 3}
+      - Count: 1
+        Prefab: {fileID: 6272246388864631682, guid: 690de865cb22e884288352185ab1ec3d, type: 3}
+      - Count: 1
+        Prefab: {fileID: 794301943220320304, guid: c319d532f410753488dae8afc564b795, type: 3}
+      - Count: 1
+        Prefab: {fileID: 794301943220320304, guid: 6f6f79289370c9c4e8c41dba9308e39b, type: 3}
+      - Count: 1
+        Prefab: {fileID: 9169519254076693938, guid: 79a2bd28ba501f047a828bfb8bd8d623, type: 3}
+      - Count: 1
+        Prefab: {fileID: 9169519254076693938, guid: a74409c835fbb2f46bd28b4fb687e38a, type: 3}
+    - MinRadius: 195
+      MaxRadius: 195
+      Spawns:
+      - Count: 1
+        Prefab: {fileID: 5123558948989654555, guid: bc1766e8523d9164ca544dc956b9697e, type: 3}
+  - Layers:
+    - MinRadius: 395
+      MaxRadius: 395
+      Spawns:
+      - Count: 1
+        Prefab: {fileID: 5123558948989654555, guid: 3a81bba947132d140bb2bbd00543a94d, type: 3}
+  - Layers:
     - MinRadius: 20
       MaxRadius: 125
       Spawns:
@@ -308,7 +351,6 @@ MonoBehaviour:
       Spawns:
       - Count: 1
         Prefab: {fileID: 5123558948989654555, guid: 021bdefa24203f34ba7cd4b9a65a0914, type: 3}
-    Origin: {fileID: 0}
 --- !u!1 &6255951769001986615
 GameObject:
   m_ObjectHideFlags: 0

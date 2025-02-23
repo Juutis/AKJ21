@@ -11156,11 +11156,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4291422077882575090, guid: 65e85a7a036e67d43a45ee73e3f26674, type: 3}
-      propertyPath: levels.Array.data[0].Layers.Array.size
-      value: 5
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].MaxRadius
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291422077882575090, guid: 65e85a7a036e67d43a45ee73e3f26674, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[4].MaxRadius
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291422077882575090, guid: 65e85a7a036e67d43a45ee73e3f26674, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[4].MinRadius
+      value: 195
       objectReference: {fileID: 0}
     - target: {fileID: 4291422077882575090, guid: 65e85a7a036e67d43a45ee73e3f26674, type: 3}
       propertyPath: levels.Array.data[0].Layers.Array.data[4].Spawns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291422077882575090, guid: 65e85a7a036e67d43a45ee73e3f26674, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[4].Spawns.Array.data[0].Count
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291422077882575090, guid: 65e85a7a036e67d43a45ee73e3f26674, type: 3}
@@ -11191,6 +11203,10 @@ PrefabInstance:
       propertyPath: levels.Array.data[0].Layers.Array.data[4].Spawns.Array.data[7].Count
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4291422077882575090, guid: 65e85a7a036e67d43a45ee73e3f26674, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[4].Spawns.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 5123558948989654555, guid: bc1766e8523d9164ca544dc956b9697e, type: 3}
     - target: {fileID: 4291422077882575090, guid: 65e85a7a036e67d43a45ee73e3f26674, type: 3}
       propertyPath: levels.Array.data[0].Layers.Array.data[4].Spawns.Array.data[1].Prefab
       value: 

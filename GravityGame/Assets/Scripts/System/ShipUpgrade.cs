@@ -20,10 +20,10 @@ public class ShipUpgrade : MonoBehaviour
 
     public void Apply() {
         if (isApplied) {
-            Debug.Log("ALREADY APPLIED: " + config.Name);
+            //Debug.Log("ALREADY APPLIED: " + config.Name);
             return;
         }
-        Debug.Log($"Applying ShipUpgrade: {config.UpgradeType} - {config.UpgradeTier}");
+        //Debug.Log($"Applying ShipUpgrade: {config.UpgradeType} - {config.UpgradeTier}");
         if (config.TypeConfig.UpgradeType == ShipUpgradeType.Cannon) {
             // implement cannon upgrade
         } else if (config.TypeConfig.UpgradeType == ShipUpgradeType.Storage) {

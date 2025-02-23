@@ -248,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: Level
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[0].Origin
@@ -259,8 +259,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 346640769}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[1].Layers.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[3].MaxRadius
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[3].MinRadius
+      value: 195
       objectReference: {fileID: 0}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[1].Layers.Array.data[0].MaxRadius
@@ -273,6 +285,18 @@ PrefabInstance:
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[0].Layers.Array.data[0].spawns.Array.size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[3].Spawns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[4].Spawns.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[1].Layers.Array.data[0].Spawns.Array.size
@@ -331,6 +355,38 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[0].Count
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[1].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[2].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[3].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[4].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[5].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[6].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[3].Spawns.Array.data[0].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[1].Layers.Array.data[0].Spawns.Array.data[0].Count
       value: 20
       objectReference: {fileID: 0}
@@ -354,6 +410,26 @@ PrefabInstance:
       propertyPath: levels.Array.data[0].Layers.Array.data[1].Spawns.Array.data[5].Prefab
       value: 
       objectReference: {fileID: 2969813555231660389, guid: 31881417978c0a347914ced6c385e833, type: 3}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[3].Prefab
+      value: 
+      objectReference: {fileID: 794301943220320304, guid: c319d532f410753488dae8afc564b795, type: 3}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[4].Prefab
+      value: 
+      objectReference: {fileID: 794301943220320304, guid: 6f6f79289370c9c4e8c41dba9308e39b, type: 3}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[5].Prefab
+      value: 
+      objectReference: {fileID: 9169519254076693938, guid: 79a2bd28ba501f047a828bfb8bd8d623, type: 3}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[2].Spawns.Array.data[6].Prefab
+      value: 
+      objectReference: {fileID: 9169519254076693938, guid: a74409c835fbb2f46bd28b4fb687e38a, type: 3}
+    - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
+      propertyPath: levels.Array.data[0].Layers.Array.data[3].Spawns.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 5123558948989654555, guid: bc1766e8523d9164ca544dc956b9697e, type: 3}
     - target: {fileID: 6213893225485818352, guid: 731082518fc106942ae6e911cedc4315, type: 3}
       propertyPath: levels.Array.data[1].Layers.Array.data[0].Spawns.Array.data[0].Prefab
       value: 
@@ -486,6 +562,10 @@ PrefabInstance:
     - target: {fileID: 6860708919033127419, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
       propertyPath: m_Name
       value: WorldOrigin
+      objectReference: {fileID: 0}
+    - target: {fileID: 7937564415697067457, guid: 9a42b672727c77348b194d651bbdf4d1, type: 3}
+      propertyPath: WorldRadius
+      value: 350
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

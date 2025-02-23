@@ -44,7 +44,7 @@ public class ShipUpgradeManager : MonoBehaviour
         //var highestUpgrade = upgrades.FindLast(u => u.UpgradeType == upgradeType);
         ShipUpgrade highestUpgrade = null;
         foreach(ShipUpgrade upgrade in upgrades) {
-            Debug.Log($"{upgrade.UpgradeType} {upgrade.UpgradeTier}");
+            //Debug.Log($"{upgrade.UpgradeType} {upgrade.UpgradeTier}");
             if (upgrade.UpgradeType == upgradeType) {
                 if (highestUpgrade == null || highestUpgrade.UpgradeTier < upgrade.UpgradeTier) {
                     highestUpgrade = upgrade;
@@ -52,9 +52,9 @@ public class ShipUpgradeManager : MonoBehaviour
             }
         }
         if (highestUpgrade != null) {
-            Debug.Log($"Highest upgrade for {upgradeType} is {highestUpgrade.UpgradeTier}");
+            //Debug.Log($"Highest upgrade for {upgradeType} is {highestUpgrade.UpgradeTier}");
         } else {
-            Debug.Log($"No upgrades for {upgradeType}");
+            //Debug.Log($"No upgrades for {upgradeType}");
         }
         return highestUpgrade;
     }

@@ -57,6 +57,7 @@ public class DestroyablePortal : MonoBehaviour
             }
         }
 
+        transform.forward = transform.position;
     }
 
     // Update is called once per frame
