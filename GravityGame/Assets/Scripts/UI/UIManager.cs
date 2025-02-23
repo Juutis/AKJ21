@@ -24,6 +24,8 @@ public class UIManager: MonoBehaviour {
 
     [SerializeField]
     private Transform uiMessageContainer;
+    [SerializeField]
+    private UIEndGame uiTheEnd;
 
     private bool storageFullMessage = false;
 
@@ -40,6 +42,12 @@ public class UIManager: MonoBehaviour {
 
     void Update()
     {
+        #if UNITY_EDITOR
+        // test endgame
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            TheEnd();
+        }
+        #endif
         ProcessMessageBuffer();
         if (uiShop.IsShown && Input.GetKeyDown(KeyCode.B))
         {
@@ -57,6 +65,10 @@ public class UIManager: MonoBehaviour {
             shopIndicator.SetActive(false);
         }
 
+    }
+
+    public void TheEnd() {
+        uiTheEnd.Show();
     }
 
     public void ShowCurtains(UnityAction showCallback) {
