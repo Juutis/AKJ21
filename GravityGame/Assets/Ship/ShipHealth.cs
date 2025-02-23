@@ -60,6 +60,8 @@ public class ShipHealth : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
         {
             Hit();
+            var bullet = other.GetComponent<Bullet>();
+            bullet.Kill();
         }
     }
 }

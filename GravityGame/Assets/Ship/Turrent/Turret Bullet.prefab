@@ -64,6 +64,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret Bullet
       objectReference: {fileID: 0}
+    - target: {fileID: 6022338372131784841, guid: 16e68a82d0607804380459e2951d582e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022338372131784841, guid: 16e68a82d0607804380459e2951d582e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.9048885
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022338372131784841, guid: 16e68a82d0607804380459e2951d582e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

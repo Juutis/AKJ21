@@ -42,8 +42,8 @@ public class ShipSpawner : MonoBehaviour
     }
 
     void unleashGobbo() {
+        Destroy(gameObject);
         shipAi.enabled = true;
         shipAi.transform.parent = null;
-        Destroy(gameObject);
     }
 }

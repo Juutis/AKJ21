@@ -150,7 +150,8 @@ public class GobboShip : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerBullet"))
         {
             Hit();
-            Destroy(other.gameObject);
+            var bullet = other.GetComponent<Bullet>();
+            bullet.Kill();
         }
     }
 }

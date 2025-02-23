@@ -4,6 +4,9 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody rb;
 
+    [SerializeField]
+    private ParticleSystem poof;
+
     public void Init(Vector3 position, Vector3 velocity) {
         rb = GetComponent<Rigidbody>();
         transform.position = position;
@@ -13,6 +16,8 @@ public class Bullet : MonoBehaviour
     }
 
     public void Kill() {
+        poof.Play();
+        poof.transform.parent = null;
         Destroy(gameObject);
     }
 
